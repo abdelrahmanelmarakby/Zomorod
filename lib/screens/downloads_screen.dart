@@ -5,32 +5,31 @@ import '../data/data.dart';
 import '../widgets/util.dart';
 
 class DownloadsScreen extends StatelessWidget {
-  const DownloadsScreen({Key key}) : super(key: key);
+  const DownloadsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: CustomAppBar(),
       body: buildDownloadScreen(),
     );
   }
 
-
-
   Widget buildDownloadScreen() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: ListView.separated(
             scrollDirection: Axis.vertical,
             primary: false,
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               final video = homeScreenVideos[index];
               return Download_page(video: video);
             },
-            separatorBuilder: (context, index) => SizedBox(height: 15.0,),
+            separatorBuilder: (context, index) => SizedBox(
+                  height: 15.0,
+                ),
             itemCount: 8),
       ),
     );

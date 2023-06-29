@@ -4,18 +4,18 @@ import '../data/data.dart';
 import '../data/colors.dart';
 
 class CommentsSection extends StatelessWidget {
-  const CommentsSection({Key key}) : super(key: key);
+  const CommentsSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: mainComponentsGrey,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 15.0),
+      child: const Padding(
+        padding: EdgeInsets.only(bottom: 15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             CommentsSectionHeader(),
             LastComment(),
           ],
@@ -26,7 +26,7 @@ class CommentsSection extends StatelessWidget {
 }
 
 class CommentsSectionHeader extends StatelessWidget {
-  const CommentsSectionHeader({Key key}) : super(key: key);
+  const CommentsSectionHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class CommentsSectionHeader extends StatelessWidget {
 }
 
 class LastComment extends StatelessWidget {
-  const LastComment({Key key}) : super(key: key);
+  const LastComment({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

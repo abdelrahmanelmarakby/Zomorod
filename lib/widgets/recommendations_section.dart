@@ -4,9 +4,8 @@ import '../widgets/video_recommendation_card.dart';
 
 import '../data/data.dart';
 
-
 class RecommendationsSection extends StatelessWidget {
-  const RecommendationsSection({Key key}) : super(key: key);
+  const RecommendationsSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +19,8 @@ class RecommendationsSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             for (var recommendationsPosition = 0;
-            recommendationsPosition < recommendations.length;
-            recommendationsPosition++) ...{
+                recommendationsPosition < recommendations.length;
+                recommendationsPosition++) ...{
               VideoRecommendation(recommendations[recommendationsPosition]),
             },
           ],

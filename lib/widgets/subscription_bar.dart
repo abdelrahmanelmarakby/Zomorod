@@ -3,25 +3,24 @@ import '../data/colors.dart';
 import '../data/data.dart';
 import '../widgets/util.dart';
 
-
 class SubscriptionBar extends StatelessWidget {
-  const SubscriptionBar({Key key}) : super(key: key);
+  const SubscriptionBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: mainComponentsGrey,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const <Widget>[ChannelInformation(), SubscriptionStatus()],
+        children: <Widget>[ChannelInformation(), SubscriptionStatus()],
       ),
     );
   }
 }
 
 class ChannelInformation extends StatelessWidget {
-  const ChannelInformation({Key key}) : super(key: key);
+  const ChannelInformation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +62,7 @@ class ChannelInformation extends StatelessWidget {
                 ),
                 Text(
                   '${formatNumber(currentVideoDetailChannel.subscribersCounter)}'
-                      ' subscribers',
+                  ' subscribers',
                   style: const TextStyle(color: textLightGrey, fontSize: 13),
                 ),
               ],
@@ -76,7 +75,7 @@ class ChannelInformation extends StatelessWidget {
 }
 
 class SubscriptionStatus extends StatelessWidget {
-  const SubscriptionStatus({Key key}) : super(key: key);
+  const SubscriptionStatus({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

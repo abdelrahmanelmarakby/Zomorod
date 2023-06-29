@@ -8,16 +8,14 @@ import '../data/data.dart';
 import '../widgets/history_card.dart';
 
 class History extends StatelessWidget {
-  final Video video;
-  const History({Key key,@required this.video}) : super(key: key);
+  final Video? video;
+  const History({Key? key, required this.video}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: CustomAppBar(),
       body: buildHistoryScreen(),
-
-
     );
   }
 
@@ -25,22 +23,19 @@ class History extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         child: ListView.separated(
             scrollDirection: Axis.vertical,
             primary: false,
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               final video = homeScreenVideos[index];
               return History_page(video: video);
             },
-            separatorBuilder: (context, index) => SizedBox(height: 15.0,),
+            separatorBuilder: (context, index) => const SizedBox(
+                  height: 15.0,
+                ),
             itemCount: 8),
       ),
     );
   }
-
-
 }
-
-

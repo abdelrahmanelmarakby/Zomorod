@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zomorod/screens/downloads_screen.dart';
@@ -12,8 +10,9 @@ import '../widgets/history_card.dart';
 
 import '../widgets/video_card.dart';
 
-
 class LibraryTab extends StatelessWidget {
+  const LibraryTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,75 +20,79 @@ class LibraryTab extends StatelessWidget {
       body: build_library(context),
     );
   }
-  Widget build_library(BuildContext context){
+
+  Widget build_library(BuildContext context) {
     return SingleChildScrollView(
       primary: false,
       child: Column(
         children: [
           ListTile(
-            leading: Icon(Icons.history, color: suvaGrey),
-            title: Text(
+            leading: const Icon(Icons.history, color: suvaGrey),
+            title: const Text(
               'History',
               style: TextStyle(color: Colors.white),
             ),
             trailing: GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>  History()
-                      )
-                  ) ;
+                          builder: (context) => const History(
+                                video: null,
+                              )));
                 },
-                child: Text('Show All',style:
-                TextStyle(
-                    color: linkBlue),)),
+                child: const Text(
+                  'Show All',
+                  style: TextStyle(color: linkBlue),
+                )),
           ),
-          Container(
+          SizedBox(
             height: 150.0,
             width: double.infinity,
             child: ListView.separated(
-              scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 primary: false,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   final video = homeScreenVideos[index];
-                  return Container(
+                  return SizedBox(
                       height: 90.0,
                       width: 170.0,
                       child: HistoryCard(video: video));
                 },
-                separatorBuilder: (context, index) => SizedBox(width: 5.0,),
+                separatorBuilder: (context, index) => const SizedBox(
+                      width: 5.0,
+                    ),
                 itemCount: 10),
           ),
-          Divider(
-            thickness: 0.1,
-             // height:0.5 ,
+          const Divider(
+              thickness: 0.1,
+              // height:0.5 ,
               color: Colors.white),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.video_library, color: suvaGrey),
-            title:
-            Text('Your videos', style: TextStyle(color: Colors.white)),
+            title: Text('Your videos', style: TextStyle(color: Colors.white)),
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.push(
-                 context,
-                 MaterialPageRoute(
-                    builder: (context) => const DownloadsScreen(),),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DownloadsScreen(),
+                ),
               );
-              },
-            child: ListTile(
+            },
+            child: const ListTile(
               leading: Icon(Icons.file_download, color: suvaGrey),
               title: Text('Downloads', style: TextStyle(color: Colors.white)),
               subtitle: Text('2 recommendations',
                   style: TextStyle(color: suvaGrey, fontSize: 12.0)),
             ),
           ),
-          Divider(
+          const Divider(
               thickness: 0.1,
               // height:0.5 ,
               color: Colors.white),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,22 +102,20 @@ class LibraryTab extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text('Recently added',
-                        style:
-                        TextStyle(color: Colors.white, fontSize: 16.0)),
+                        style: TextStyle(color: Colors.white, fontSize: 16.0)),
                     Icon(Icons.arrow_drop_down, color: Colors.white)
                   ],
                 )
               ],
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add, color: linkBlue),
             title: Text('New Playlist', style: TextStyle(color: linkBlue)),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.watch_later, color: suvaGrey),
-            title:
-            Text('Watch later', style: TextStyle(color: Colors.white)),
+            title: Text('Watch later', style: TextStyle(color: Colors.white)),
             subtitle: Text('Videos you save for later',
                 style: TextStyle(color: suvaGrey, fontSize: 12.0)),
           ),
@@ -122,6 +123,4 @@ class LibraryTab extends StatelessWidget {
       ),
     );
   }
-
-
 }

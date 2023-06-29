@@ -6,12 +6,10 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../data/data.dart';
 import '../screens/video_detail_screen.dart';
 
-
-
 class VideoRecommendation extends StatelessWidget {
   final Video videoData;
 
-  const VideoRecommendation(this.videoData, {Key key}) : super(key: key);
+  const VideoRecommendation(this.videoData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +18,15 @@ class VideoRecommendation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const VideoDetailPage(),
-           
-        ),
-      );
-    },
-            child: Videorec(path: videoData.miniatureImagePath)
-        ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const VideoDetailPage(),
+                ),
+              );
+            },
+            child: Videorec(path: videoData.miniatureImagePath)),
         Container(
           height: 70,
           color: mainComponentsGrey,
@@ -59,7 +55,7 @@ class VideoRecommendation extends StatelessWidget {
 class VideoRecommendationDescription extends StatelessWidget {
   final Video videoData;
 
-  const VideoRecommendationDescription(this.videoData, {Key key})
+  const VideoRecommendationDescription(this.videoData, {Key? key})
       : super(key: key);
 
   @override
@@ -100,8 +96,8 @@ class VideoRecommendationDescription extends StatelessWidget {
                   ),
                   Text(
                     '${videoData.channel.name} • '
-                        '${formatNumber(videoData.viewsCounter)} views • '
-                        '${timeago.format(videoData.timestamp)}',
+                    '${formatNumber(videoData.viewsCounter)} views • '
+                    '${timeago.format(videoData.timestamp)}',
                     style: const TextStyle(color: textLightGrey, fontSize: 13),
                   ),
                 ],

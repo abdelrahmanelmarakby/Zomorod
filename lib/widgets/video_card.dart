@@ -7,7 +7,7 @@ import '../data/data.dart';
 class VideoCard extends StatelessWidget {
   final Video video;
 
-  const VideoCard({Key key, @required this.video}) : super(key: key);
+  const VideoCard({Key? key, required this.video}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class VideoCard extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
-                      .copyWith(color: Colors.white),
+                      ?.copyWith(color: Colors.white),
                 ),
               ),
             )
@@ -74,20 +74,20 @@ class VideoCard extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
-                            .copyWith(fontSize: 15.0),
+                            ?.copyWith(fontSize: 15.0),
                       ),
                     ),
                     Flexible(
                       child: Text(
                         '${video.channel.name} • '
-                            '${formatNumber(video.viewsCounter)} • '
-                            '${timeago.format(video.timestamp)}',
+                        '${formatNumber(video.viewsCounter)} • '
+                        '${timeago.format(video.timestamp)}',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
-                            .copyWith(fontSize: 14.0),
+                            ?.copyWith(fontSize: 14.0),
                       ),
                     ),
                   ],
@@ -95,7 +95,7 @@ class VideoCard extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {},
-                child: Icon(Icons.more_vert, size: 20.0),
+                child: const Icon(Icons.more_vert, size: 20.0),
               ),
             ],
           ),

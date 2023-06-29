@@ -28,7 +28,7 @@ class ActionButtonsBar extends StatelessWidget {
     ),
   ];
 
-  ActionButtonsBar({Key key}) : super(key: key);
+  ActionButtonsBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

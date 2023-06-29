@@ -5,9 +5,8 @@ import 'package:timeago/timeago.dart' as timeago;
 
 import '../data/data.dart';
 
-
 class VideoDescription extends StatelessWidget {
-  const VideoDescription({Key key}) : super(key: key);
+  const VideoDescription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class VideoDescription extends StatelessWidget {
 }
 
 class VideoDetailsPanel extends StatelessWidget {
-  const VideoDetailsPanel({Key key}) : super(key: key);
+  const VideoDetailsPanel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,7 @@ class VideoDetailsPanel extends StatelessWidget {
                     children: [
                       TextSpan(
                         text:
-                        '${formatNumber(currentVideo.viewsCounter)} views • '
+                            '${formatNumber(currentVideo.viewsCounter)} views • '
                             '${timeago.format(currentVideo.timestamp)} ',
                       ),
                       TextSpan(

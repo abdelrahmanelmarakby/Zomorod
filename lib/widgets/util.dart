@@ -19,7 +19,7 @@ String formatNumber(int value) {
 class HorizontalSeparator extends StatelessWidget {
   final double height;
 
-  const HorizontalSeparator({Key key, this.height = 1}) : super(key: key);
+  const HorizontalSeparator({Key? key, this.height = 1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +28,24 @@ class HorizontalSeparator extends StatelessWidget {
     );
   }
 }
+
 class VideoMiniature extends StatelessWidget {
+  VideoMiniature({Key? key}) : super(key: key);
 
-  VideoMiniature({Key key}) : super(key: key);
-
-  final FlickManager flickManager= FlickManager(
+  final FlickManager flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.network(
           'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'));
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).orientation == Orientation.portrait
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 2,
       child: FlickVideoPlayer(
-
-
         flickManager: flickManager,
         wakelockEnabled: true,
-
-
       ),
     );
   }
@@ -58,7 +54,7 @@ class VideoMiniature extends StatelessWidget {
 class Videorec extends StatelessWidget {
   final String path;
 
-  Videorec({Key key, this.path = '/'}) : super(key: key);
+  const Videorec({Key? key, this.path = '/'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +63,6 @@ class Videorec extends StatelessWidget {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 3.5,
       height: MediaQuery.of(context).size.height / 3.5,
-
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(path), fit: BoxFit.fill),
       ),
@@ -82,8 +77,7 @@ class Videorec extends StatelessWidget {
 class History_page extends StatelessWidget {
   final Video video;
 
-  const History_page({Key key, @required this.video}) : super(key: key);
-
+  const History_page({Key? key, required this.video}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,13 +113,15 @@ class History_page extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
-                      .copyWith(color: Colors.white),
+                      ?.copyWith(color: Colors.white),
                 ),
               ),
             )
           ],
         ),
-        SizedBox(width: 15,),
+        const SizedBox(
+          width: 15,
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(5.0),
@@ -145,35 +141,36 @@ class History_page extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
-                              .copyWith(fontSize: 11.0),
+                              ?.copyWith(fontSize: 11.0),
                         ),
                       ),
                       Flexible(
                         child: Text(
                           '${video.channel.name} • '
-                              '${formatNumber(video.viewsCounter)} • '
-                              '${timeago.format(video.timestamp)}',
+                          '${formatNumber(video.viewsCounter)} • '
+                          '${timeago.format(video.timestamp)}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
-                              .copyWith(fontSize: 10.0),
+                              ?.copyWith(fontSize: 10.0),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: 5.0,),
+                const SizedBox(
+                  width: 5.0,
+                ),
                 GestureDetector(
                   onTap: () {},
-                  child: Icon(Icons.more_vert, size: 20.0),
+                  child: const Icon(Icons.more_vert, size: 20.0),
                 ),
               ],
             ),
           ),
         ),
-
       ],
     );
   }
@@ -182,8 +179,7 @@ class History_page extends StatelessWidget {
 class Download_page extends StatelessWidget {
   final Video video;
 
-  const Download_page({Key key, @required this.video}) : super(key: key);
-
+  const Download_page({Key? key, required this.video}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -219,13 +215,15 @@ class Download_page extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
-                      .copyWith(color: Colors.white),
+                      ?.copyWith(color: Colors.white),
                 ),
               ),
             )
           ],
         ),
-        SizedBox(width: 15,),
+        const SizedBox(
+          width: 15,
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(5.0),
@@ -245,37 +243,37 @@ class Download_page extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
-                              .copyWith(fontSize: 11.0),
+                              ?.copyWith(fontSize: 11.0),
                         ),
                       ),
                       Flexible(
                         child: Text(
                           '${video.channel.name} • '
-                              '${formatNumber(video.viewsCounter)} • '
-                              '${timeago.format(video.timestamp)}',
+                          '${formatNumber(video.viewsCounter)} • '
+                          '${timeago.format(video.timestamp)}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
-                              .copyWith(fontSize: 10.0),
+                              ?.copyWith(fontSize: 10.0),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: 5.0,),
+                const SizedBox(
+                  width: 5.0,
+                ),
                 GestureDetector(
                   onTap: () {},
-                  child: Icon(Icons.more_vert, size: 20.0),
+                  child: const Icon(Icons.more_vert, size: 20.0),
                 ),
               ],
             ),
           ),
         ),
-
       ],
     );
   }
 }
-

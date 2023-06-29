@@ -4,14 +4,10 @@ import '../widgets/util.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../data/data.dart';
 
-
-
-
-
 class HistoryCard extends StatelessWidget {
   final Video video;
 
-  const HistoryCard({Key key, @required this.video}) : super(key: key);
+  const HistoryCard({Key? key, required this.video}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +42,7 @@ class HistoryCard extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
-                      .copyWith(color: Colors.white),
+                      ?.copyWith(color: Colors.white),
                 ),
               ),
             )
@@ -71,20 +67,20 @@ class HistoryCard extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
-                            .copyWith(fontSize: 11.0),
+                            ?.copyWith(fontSize: 11.0),
                       ),
                     ),
                     Flexible(
                       child: Text(
                         '${video.channel.name} • '
-                            '${formatNumber(video.viewsCounter)} • '
-                            '${timeago.format(video.timestamp)}',
+                        '${formatNumber(video.viewsCounter)} • '
+                        '${timeago.format(video.timestamp)}',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
-                            .copyWith(fontSize: 10.0),
+                            ?.copyWith(fontSize: 10.0),
                       ),
                     ),
                   ],
@@ -92,7 +88,7 @@ class HistoryCard extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {},
-                child: Icon(Icons.more_vert, size: 20.0),
+                child: const Icon(Icons.more_vert, size: 20.0),
               ),
             ],
           ),

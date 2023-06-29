@@ -4,9 +4,8 @@ import '../screens/home_screen.dart';
 import '../screens/library_screen.dart';
 import '../screens/subscription_screen.dart';
 
-
 class NavScreen extends StatefulWidget {
-  const NavScreen({Key key}) : super(key: key);
+  const NavScreen({Key? key}) : super(key: key);
 
   @override
   _NavScreenState createState() => _NavScreenState();
@@ -30,19 +29,19 @@ class _NavScreenState extends State<NavScreen> {
                 .asMap()
                 .map(
                   (i, screen) => MapEntry(
-                i,
-                Offstage(
-                  offstage: _selectedIndex != i,
-                  child: screen,
-                ),
-              ),
-            )
+                    i,
+                    Offstage(
+                      offstage: _selectedIndex != i,
+                      child: screen,
+                    ),
+                  ),
+                )
                 .values
                 .toList(),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          //backgroundColor: linkBlue ,
+            //backgroundColor: linkBlue ,
             selectedItemColor: linkBlue,
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
@@ -70,7 +69,6 @@ class _NavScreenState extends State<NavScreen> {
                 activeIcon: Icon(Icons.video_library),
                 label: 'Library',
               ),
-            ])
-    );
+            ]));
   }
 }

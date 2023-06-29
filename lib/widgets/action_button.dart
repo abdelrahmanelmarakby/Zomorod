@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import '../data/colors.dart';
 
-
-
 class ActionButton extends StatelessWidget {
   final IconData actionIcon;
   final String bottomLabel;
 
   const ActionButton(
-      {Key key, this.actionIcon = Icons.close, this.bottomLabel = 'None'})
+      {Key? key, this.actionIcon = Icons.close, this.bottomLabel = 'None'})
       : super(key: key);
 
   @override

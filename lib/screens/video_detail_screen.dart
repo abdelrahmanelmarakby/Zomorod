@@ -7,9 +7,8 @@ import '../widgets/subscription_bar.dart';
 import '../widgets/util.dart';
 import '../widgets/video_description.dart';
 
-
 class VideoDetailPage extends StatelessWidget {
-  const VideoDetailPage({Key key}) : super(key: key);
+  const VideoDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
