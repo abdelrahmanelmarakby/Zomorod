@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../screens/user_profile_screen.dart';
 import '../data/data.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({Key? key}) : super(key: key);
+  const CustomAppBar({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -12,12 +13,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leadingWidth: 100.0,
-      leading: Padding(
-          padding: const EdgeInsets.only(left: 12.0),
+      leading: const Padding(
+          padding: EdgeInsets.only(left: 12.0),
           child: Center(
             child: Text(
               'ZOMOROD',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.white),
             ),
           ) //Image.asset('assets/images/home_screen/logos/logo_dark.png'),
           ),
