@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../data/colors.dart';
@@ -6,11 +5,13 @@ import '../widgets/recommendations_section.dart';
 import 'all_subscription_screen.dart';
 
 class Subscription extends StatelessWidget {
+  const Subscription({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgLightGrey,
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body:SafeArea(
         child: SingleChildScrollView(
           primary: false,
@@ -20,7 +21,7 @@ class Subscription extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical:7.0),
-                child: Container(
+                child: SizedBox(
                   height: 90.0,
                   width: double.infinity ,
                   child: Stack(
@@ -29,7 +30,7 @@ class Subscription extends StatelessWidget {
                       ListView.separated(
                           scrollDirection: Axis.horizontal ,
                           itemBuilder: (context, index) => buildSubsList(),
-                          separatorBuilder: (context, index) =>SizedBox(width: 4.0,) ,
+                          separatorBuilder: (context, index) =>const SizedBox(width: 4.0,) ,
                           itemCount: 10),
                       MaterialButton(
                         height: 80.0,
@@ -38,18 +39,18 @@ class Subscription extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                              builder: (context) =>  All_subscription()
+                              builder: (context) =>  const All_subscription()
                                )
                           ) ;
                         },
                         color: mainComponentsGrey,
-                        child: Text('All'),)
+                        child: const Text('All'),)
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 1.0,),
-              RecommendationsSection(),
+              const SizedBox(height: 1.0,),
+              const RecommendationsSection(),
             ],
           ),
         ),
@@ -58,7 +59,7 @@ class Subscription extends StatelessWidget {
   }
 }
 Widget buildSubsList(){
-  return Column(
+  return const Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(

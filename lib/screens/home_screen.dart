@@ -4,10 +4,12 @@ import '../widgets/app_bar.dart';
 import '../widgets/video_card.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SafeArea(
         child: CustomScrollView(
           primary: false,

@@ -1,11 +1,12 @@
 //import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import '../data/colors.dart';
 //import 'package:video_player/video_player.dart';
 
 import '../widgets/app_bar.dart';
 
 class All_subscription extends StatelessWidget {
+  const All_subscription({super.key});
+
   @override
 
   //final FlickManager flickManager= FlickManager(
@@ -13,16 +14,16 @@ class All_subscription extends StatelessWidget {
        //   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'));
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
 
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0,top: 10.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 10.0,top: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
+                children: [
                   Icon(Icons.keyboard_arrow_down_outlined,color: Colors.white70,),
                   Text('most related',style:TextStyle(
                     fontSize: 12.0,
@@ -57,12 +58,12 @@ class All_subscription extends StatelessWidget {
   }
   Widget buildsubscripedchannelCard() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       child: GestureDetector(
         onTap: (){
 
         },
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Icon(

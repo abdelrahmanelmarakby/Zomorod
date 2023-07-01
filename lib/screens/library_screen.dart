@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zomorod/screens/downloads_screen.dart';
 import 'package:zomorod/screens/history_screen.dart';
-import 'package:zomorod/screens/video_detail_screen.dart';
 import '../data/colors.dart';
 import '../data/data.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/history_card.dart';
 
-import '../widgets/video_card.dart';
 
 class LibraryTab extends StatelessWidget {
   const LibraryTab({super.key});
@@ -16,7 +13,7 @@ class LibraryTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: build_library(context),
     );
   }

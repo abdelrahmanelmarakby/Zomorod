@@ -1,9 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'app/modules/home/bindings/home_binding.dart';

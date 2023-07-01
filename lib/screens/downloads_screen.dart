@@ -10,7 +10,7 @@ class DownloadsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: buildDownloadScreen(),
     );
   }
@@ -27,7 +27,7 @@ class DownloadsScreen extends StatelessWidget {
               final video = homeScreenVideos[index];
               return Download_page(video: video);
             },
-            separatorBuilder: (context, index) => SizedBox(
+            separatorBuilder: (context, index) => const SizedBox(
                   height: 15.0,
                 ),
             itemCount: 8),

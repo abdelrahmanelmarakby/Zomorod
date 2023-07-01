@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zomorod/screens/video_detail_screen.dart';
 import 'package:zomorod/widgets/app_bar.dart';
 import 'package:zomorod/widgets/util.dart';
-import 'package:timeago/timeago.dart' as timeago;
-import '../data/colors.dart';
 import '../data/data.dart';
-import '../widgets/history_card.dart';
 
 class History extends StatelessWidget {
   final Video? video;
@@ -14,7 +10,7 @@ class History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: buildHistoryScreen(),
     );
   }

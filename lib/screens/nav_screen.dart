@@ -14,10 +14,10 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   int _selectedIndex = 0;
   final _screens = [
-    HomeScreen(),
+    const HomeScreen(),
     const Scaffold(body: Center(child: Text('Add'))),
-    Subscription(),
-    LibraryTab(),
+    const Subscription(),
+    const LibraryTab(),
     //const Scaffold(body: Center(child: Text('Subscriptions'))),
   ];
   @override
