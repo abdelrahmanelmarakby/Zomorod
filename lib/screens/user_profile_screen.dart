@@ -48,8 +48,13 @@ class UserProfilePage extends StatelessWidget {
                         const Text('Fatma.M.Elessawy@gmail.com',
                             style: TextStyle(fontSize: 16.0)),
                         const SizedBox(height: 5.0),
-                        const Text('Manage your Zomrod Account',
-                            style: TextStyle(color: linkBlue))
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.PROFILE_SETTINGS);
+                          },
+                          child: const Text('Manage your Zomrod Account',
+                              style: TextStyle(color: linkBlue)),
+                        )
                       ],
                     )
                   ],
@@ -70,7 +75,7 @@ class UserProfilePage extends StatelessWidget {
               const ListTile(
                 leading: Icon(Icons.settings_applications, color: suvaGrey),
                 title: Text(
-                  'Youtube Studio',
+                  'zomorod Studio',
                 ),
               ),
               GestureDetector(
@@ -87,7 +92,7 @@ class UserProfilePage extends StatelessWidget {
               const ListTile(
                 leading: Icon(Icons.video_library, color: suvaGrey),
                 title: Text(
-                  'Get YouTube Premium',
+                  'Get zomorod Premium',
                 ),
               ),
               const ListTile(
@@ -105,7 +110,7 @@ class UserProfilePage extends StatelessWidget {
               const ListTile(
                 leading: Icon(Icons.security, color: suvaGrey),
                 title: Text(
-                  'Your data in YouTube',
+                  'Your data in zomorod',
                 ),
               ),
               const Divider(),

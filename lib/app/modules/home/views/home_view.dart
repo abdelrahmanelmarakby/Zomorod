@@ -66,7 +66,7 @@ class AppDrawer extends GetWidget<HomeController> {
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                 )),
-            subtitle: const Text("Manage your youtube account",
+            subtitle: const Text("Manage your zomorod account",
                 style: TextStyle(
                     fontWeight: FontWeight.w300,
                     color: Colors.blue,

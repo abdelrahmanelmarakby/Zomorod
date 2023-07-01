@@ -56,7 +56,7 @@ class ProfileSettingsView extends GetView<ProfileSettingsController> {
             ListTile(
               title: const Text("Channel link"),
               subtitle: Text(
-                "youtube.com/fatma_maged",
+                "zomorod.com/fatma_maged",
                 style: getLightTextStyle(color: Colors.grey),
               ),
               trailing: const Icon(Iconsax.link_1),
