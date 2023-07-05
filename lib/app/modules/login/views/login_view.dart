@@ -9,7 +9,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:get/get.dart';
 
+import '../../../data/api/auth_apis.dart';
 import '../../home/views/home_view.dart';
+import '../controllers/login_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -27,8 +29,13 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
   late Animation<double> animation4;
   bool isLogin = true;
 
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
   @override
   void initState() {
+    Get.put(LoginController());
     super.initState();
 
     controller1 = AnimationController(
@@ -180,19 +187,19 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        component1(Icons.account_circle_outlined,
+                        component1(name, Icons.account_circle_outlined,
                             'User name...', false, false),
                         if (!isLogin)
                           FadeIn(
                             duration: const Duration(milliseconds: 800),
-                            child: component1(
-                                Icons.email_outlined, 'Email...', false, true),
+                            child: component1(email, Icons.email_outlined,
+                                'Email...', false, true),
                           ),
-                        component1(
-                            Icons.lock_outline, 'Password...', true, false),
+                        component1(password, Icons.lock_outline, 'Password...',
+                            true, false),
                         if (!isLogin)
-                          component1(Icons.lock_outline, 'Confirm password...',
-                              true, false),
+                          component1(confirmPassword, Icons.lock_outline,
+                              'Confirm password...', true, false),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -201,7 +208,16 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                                 isLogin ? 'LOGIN' : 'Register'.toUpperCase(),
                                 2.58,
                                 () {
-                                  Get.to(const HomeView());
+                                  if (isLogin) {
+                                    AuthApis.login(
+                                        email: email.text,
+                                        password: password.text);
+                                  } else {
+                                    AuthApis.register(
+                                        name: name.text,
+                                        email: email.text,
+                                        password: password.text);
+                                  }
                                   HapticFeedback.lightImpact();
                                 },
                               ),
@@ -257,8 +273,8 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
     );
   }
 
-  Widget component1(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+  Widget component1(TextEditingController controller, IconData icon,
+      String hintText, bool isPassword, bool isEmail) {
     Size size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
@@ -277,6 +293,7 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextField(
+            controller: controller,
             style: TextStyle(color: Colors.white.withOpacity(.8)),
             cursorColor: Colors.white,
             obscureText: isPassword,

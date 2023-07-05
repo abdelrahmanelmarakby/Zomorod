@@ -1,7 +1,7 @@
 import 'local_keys.dart';
 
 Map<String, String> ar = {
-  LocalKeys.appName: "ميتا مصر",
+  LocalKeys.appName: "زمرد",
   LocalKeys.introFirstTitle: "العنوان الاول",
   LocalKeys.introSecondTitle: "العنوان الثاني",
   LocalKeys.introThirdTitle: "العنوان الثالث",
