@@ -1,7 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'app/modules/home/bindings/home_binding.dart';
@@ -19,32 +21,32 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  final bool _backViewOn = true;
+  bool _backViewOn = true;
   final botToastBuilder = BotToastInit();
 
-  // @override
-  // void initState() {
-  //   Connectivity()
-  //       .onConnectivityChanged
-  //       .listen((ConnectivityResult result) async {
-  //     if (!await InternetConnectionChecker().hasConnection) {
-  //       if (!_backViewOn) {
-  //         setState(() {
-  //           _backViewOn = true;
-  //         });
-  //         // Get.dialog(const NoInternetDialog(canDismiss: false));
-  //       }
-  //     } else {
-  //       if (_backViewOn) {
-  //         Get.back();
-  //         setState(() {
-  //           _backViewOn = false;
-  //         });
-  //       }
-  //     }
-  //   });
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) async {
+      if (!await InternetConnectionChecker().hasConnection) {
+        if (!_backViewOn) {
+          setState(() {
+            _backViewOn = true;
+          });
+          // Get.dialog(const NoInternetDialog(canDismiss: false));
+        }
+      } else {
+        if (_backViewOn) {
+          Get.back();
+          setState(() {
+            _backViewOn = false;
+          });
+        }
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
