@@ -1,13 +1,16 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get/get.dart' hide FormData;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 part 'dio_network_service.freezed.dart';
 
 @freezed
 class NetworkRequestBody with _$NetworkRequestBody {
   const factory NetworkRequestBody.empty() = Empty;
-  const factory NetworkRequestBody.json(Map<String, dynamic> data) = Json;
+  const factory NetworkRequestBody.fromData(FormData data) = formData;
   const factory NetworkRequestBody.text(String data) = Text;
 }
 
@@ -33,18 +36,15 @@ class NetworkRequest {
 @freezed
 class NetworkResponse<Model> with _$NetworkResponse {
   const factory NetworkResponse.ok(Model data) = Ok;
-
-  const factory NetworkResponse.invalidParameters(String message) =
+  const factory NetworkResponse.invalidParameters(Model data) =
       InvalidParameters;
-
-  const factory NetworkResponse.noAuth(String message) = NoAuth; //401
-  const factory NetworkResponse.noAccess(String message) = NoAccess; //403
-  const factory NetworkResponse.badRequest(String message) = BadRequest; //400
-  const factory NetworkResponse.notFound(String message) = NotFound; //404
-  const factory NetworkResponse.conflict(String message) = Conflict; //409
-  const factory NetworkResponse.unProcessable(String message) =
-      UnProcessable; //422
-  const factory NetworkResponse.noData(String message) = NoData; //500
+  const factory NetworkResponse.noAuth(Model data) = NoAuth; //401
+  const factory NetworkResponse.noAccess(Model data) = NoAccess; //403
+  const factory NetworkResponse.badRequest(Model data) = BadRequest; //400
+  const factory NetworkResponse.notFound(Model data) = NotFound; //404
+  const factory NetworkResponse.conflict(Model data) = Conflict; //409
+  const factory NetworkResponse.unProcessable(Model data) = UnProcessable; //422
+  const factory NetworkResponse.noData(String data) = NoData; //500
 }
 
 class PreparedNetworkRequest<Model> {
@@ -69,7 +69,7 @@ Future<NetworkResponse<Model>> executeRequest<Model>(
 ) async {
   try {
     dynamic body = request.request.data.whenOrNull(
-      json: (data) => data,
+      fromData: (data) => data,
       text: (data) => data,
     );
     final response = await request.dio.request(
@@ -84,28 +84,32 @@ Future<NetworkResponse<Model>> executeRequest<Model>(
       onSendProgress: request.onSendProgress,
       onReceiveProgress: request.onReceiveProgress,
     );
+
+    switch (response.statusCode) {
+      case 200:
+        return NetworkResponse.ok(request.parser(response.data));
+      case 201:
+        return NetworkResponse.ok(request.parser(response.data));
+      case 400:
+        return NetworkResponse.badRequest(request.parser(response.data));
+      case 401:
+        return NetworkResponse.noAuth(request.parser(response.data));
+      case 403:
+        return NetworkResponse.noAccess(request.parser(response.data));
+      case 404:
+        return NetworkResponse.notFound(request.parser(response.data));
+      case 409:
+        return NetworkResponse.conflict(request.parser(response.data));
+      case 422:
+        return NetworkResponse.unProcessable(request.parser(response.data));
+    }
     return NetworkResponse.ok(request.parser(response.data));
   } on DioError catch (error) {
     final errorText = error.toString();
     if (error.requestOptions.cancelToken?.isCancelled ?? false) {
       return NetworkResponse.noData(errorText);
     }
-    switch (error.response?.statusCode) {
-      case 400:
-        return NetworkResponse.badRequest(errorText);
-      case 401:
-        return NetworkResponse.noAuth(errorText);
-      case 403:
-        return NetworkResponse.noAccess(errorText);
-      case 404:
-        return NetworkResponse.notFound(errorText);
-      case 409:
-        return NetworkResponse.conflict(errorText);
-      case 422:
-        return NetworkResponse.unProcessable(errorText);
-      default:
-        return NetworkResponse.noData(errorText);
-    }
+    return NetworkResponse.noData(error.toString());
   } catch (error) {
     return NetworkResponse.noData(error.toString());
   }
@@ -137,8 +141,8 @@ class NetworkService {
       )
       ..options.baseUrl = baseUrl
       ..options.headers = _headers
-      ..options.connectTimeout = const Duration(seconds: 5) // 50 seconds
-      ..options.receiveTimeout = const Duration(seconds: 5); // 50 seconds
+      ..options.connectTimeout = 10000.milliseconds // 5 seconds
+      ..options.receiveTimeout = 10000.milliseconds; // 5 seconds
     dio.options.validateStatus = (status) => true;
     return dio;
   }

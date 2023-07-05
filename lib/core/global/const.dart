@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../services/get_storage_helper.dart';
 import '../services/network_service.dart/dio_network_service.dart';
 
@@ -16,6 +18,8 @@ final NetworkService networkService = NetworkService(
     'lang': CacheHelper.getLocale,
   },
 );
+
+late SharedPreferences globalPrefs;
 
 class APIKeys {
   static String baseUrl = "https://dashboard.mobtkra-press.com";

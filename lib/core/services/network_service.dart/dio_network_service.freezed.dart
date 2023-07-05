@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'dio_network_service.dart';
 
@@ -19,21 +19,21 @@ mixin _$NetworkRequestBody {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(Map<String, dynamic> data) json,
+    required TResult Function(FormData data) fromData,
     required TResult Function(String data) text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
-    TResult? Function(Map<String, dynamic> data)? json,
+    TResult? Function(FormData data)? fromData,
     TResult? Function(String data)? text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(Map<String, dynamic> data)? json,
+    TResult Function(FormData data)? fromData,
     TResult Function(String data)? text,
     required TResult orElse(),
   }) =>
@@ -41,21 +41,21 @@ mixin _$NetworkRequestBody {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
-    required TResult Function(Json value) json,
+    required TResult Function(formData value) fromData,
     required TResult Function(Text value) text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Empty value)? empty,
-    TResult? Function(Json value)? json,
+    TResult? Function(formData value)? fromData,
     TResult? Function(Text value)? text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
-    TResult Function(Json value)? json,
+    TResult Function(formData value)? fromData,
     TResult Function(Text value)? text,
     required TResult orElse(),
   }) =>
@@ -123,7 +123,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(Map<String, dynamic> data) json,
+    required TResult Function(FormData data) fromData,
     required TResult Function(String data) text,
   }) {
     return empty();
@@ -133,7 +133,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
-    TResult? Function(Map<String, dynamic> data)? json,
+    TResult? Function(FormData data)? fromData,
     TResult? Function(String data)? text,
   }) {
     return empty?.call();
@@ -143,7 +143,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(Map<String, dynamic> data)? json,
+    TResult Function(FormData data)? fromData,
     TResult Function(String data)? text,
     required TResult orElse(),
   }) {
@@ -157,7 +157,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
-    required TResult Function(Json value) json,
+    required TResult Function(formData value) fromData,
     required TResult Function(Text value) text,
   }) {
     return empty(this);
@@ -167,7 +167,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Empty value)? empty,
-    TResult? Function(Json value)? json,
+    TResult? Function(formData value)? fromData,
     TResult? Function(Text value)? text,
   }) {
     return empty?.call(this);
@@ -177,7 +177,7 @@ class _$Empty with DiagnosticableTreeMixin implements Empty {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
-    TResult Function(Json value)? json,
+    TResult Function(formData value)? fromData,
     TResult Function(Text value)? text,
     required TResult orElse(),
   }) {
@@ -193,18 +193,19 @@ abstract class Empty implements NetworkRequestBody {
 }
 
 /// @nodoc
-abstract class _$$JsonCopyWith<$Res> {
-  factory _$$JsonCopyWith(_$Json value, $Res Function(_$Json) then) =
-      __$$JsonCopyWithImpl<$Res>;
+abstract class _$$formDataCopyWith<$Res> {
+  factory _$$formDataCopyWith(
+          _$formData value, $Res Function(_$formData) then) =
+      __$$formDataCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, dynamic> data});
+  $Res call({FormData data});
 }
 
 /// @nodoc
-class __$$JsonCopyWithImpl<$Res>
-    extends _$NetworkRequestBodyCopyWithImpl<$Res, _$Json>
-    implements _$$JsonCopyWith<$Res> {
-  __$$JsonCopyWithImpl(_$Json _value, $Res Function(_$Json) _then)
+class __$$formDataCopyWithImpl<$Res>
+    extends _$NetworkRequestBodyCopyWithImpl<$Res, _$formData>
+    implements _$$formDataCopyWith<$Res> {
+  __$$formDataCopyWithImpl(_$formData _value, $Res Function(_$formData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -212,37 +213,33 @@ class __$$JsonCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$Json(
+    return _then(_$formData(
       null == data
-          ? _value._data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as FormData,
     ));
   }
 }
 
 /// @nodoc
 
-class _$Json with DiagnosticableTreeMixin implements Json {
-  const _$Json(final Map<String, dynamic> data) : _data = data;
+class _$formData with DiagnosticableTreeMixin implements formData {
+  const _$formData(this.data);
 
-  final Map<String, dynamic> _data;
   @override
-  Map<String, dynamic> get data {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
-  }
+  final FormData data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkRequestBody.json(data: $data)';
+    return 'NetworkRequestBody.fromData(data: $data)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'NetworkRequestBody.json'))
+      ..add(DiagnosticsProperty('type', 'NetworkRequestBody.fromData'))
       ..add(DiagnosticsProperty('data', data));
   }
 
@@ -250,50 +247,49 @@ class _$Json with DiagnosticableTreeMixin implements Json {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Json &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            other is _$formData &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$JsonCopyWith<_$Json> get copyWith =>
-      __$$JsonCopyWithImpl<_$Json>(this, _$identity);
+  _$$formDataCopyWith<_$formData> get copyWith =>
+      __$$formDataCopyWithImpl<_$formData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(Map<String, dynamic> data) json,
+    required TResult Function(FormData data) fromData,
     required TResult Function(String data) text,
   }) {
-    return json(data);
+    return fromData(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
-    TResult? Function(Map<String, dynamic> data)? json,
+    TResult? Function(FormData data)? fromData,
     TResult? Function(String data)? text,
   }) {
-    return json?.call(data);
+    return fromData?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(Map<String, dynamic> data)? json,
+    TResult Function(FormData data)? fromData,
     TResult Function(String data)? text,
     required TResult orElse(),
   }) {
-    if (json != null) {
-      return json(data);
+    if (fromData != null) {
+      return fromData(data);
     }
     return orElse();
   }
@@ -302,43 +298,44 @@ class _$Json with DiagnosticableTreeMixin implements Json {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
-    required TResult Function(Json value) json,
+    required TResult Function(formData value) fromData,
     required TResult Function(Text value) text,
   }) {
-    return json(this);
+    return fromData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Empty value)? empty,
-    TResult? Function(Json value)? json,
+    TResult? Function(formData value)? fromData,
     TResult? Function(Text value)? text,
   }) {
-    return json?.call(this);
+    return fromData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
-    TResult Function(Json value)? json,
+    TResult Function(formData value)? fromData,
     TResult Function(Text value)? text,
     required TResult orElse(),
   }) {
-    if (json != null) {
-      return json(this);
+    if (fromData != null) {
+      return fromData(this);
     }
     return orElse();
   }
 }
 
-abstract class Json implements NetworkRequestBody {
-  const factory Json(final Map<String, dynamic> data) = _$Json;
+abstract class formData implements NetworkRequestBody {
+  const factory formData(final FormData data) = _$formData;
 
-  Map<String, dynamic> get data;
+  FormData get data;
   @JsonKey(ignore: true)
-  _$$JsonCopyWith<_$Json> get copyWith => throw _privateConstructorUsedError;
+  _$$formDataCopyWith<_$formData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -412,7 +409,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(Map<String, dynamic> data) json,
+    required TResult Function(FormData data) fromData,
     required TResult Function(String data) text,
   }) {
     return text(data);
@@ -422,7 +419,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
-    TResult? Function(Map<String, dynamic> data)? json,
+    TResult? Function(FormData data)? fromData,
     TResult? Function(String data)? text,
   }) {
     return text?.call(data);
@@ -432,7 +429,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(Map<String, dynamic> data)? json,
+    TResult Function(FormData data)? fromData,
     TResult Function(String data)? text,
     required TResult orElse(),
   }) {
@@ -446,7 +443,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Empty value) empty,
-    required TResult Function(Json value) json,
+    required TResult Function(formData value) fromData,
     required TResult Function(Text value) text,
   }) {
     return text(this);
@@ -456,7 +453,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Empty value)? empty,
-    TResult? Function(Json value)? json,
+    TResult? Function(formData value)? fromData,
     TResult? Function(Text value)? text,
   }) {
     return text?.call(this);
@@ -466,7 +463,7 @@ class _$Text with DiagnosticableTreeMixin implements Text {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Empty value)? empty,
-    TResult Function(Json value)? json,
+    TResult Function(formData value)? fromData,
     TResult Function(Text value)? text,
     required TResult orElse(),
   }) {
@@ -487,43 +484,44 @@ abstract class Text implements NetworkRequestBody {
 
 /// @nodoc
 mixin _$NetworkResponse<Model> {
+  Object? get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -606,10 +604,10 @@ class __$$OkCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$Ok<Model>(
-      null == data
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Model,
@@ -660,14 +658,14 @@ class _$Ok<Model> with DiagnosticableTreeMixin implements Ok<Model> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
     return ok(data);
   }
@@ -676,14 +674,14 @@ class _$Ok<Model> with DiagnosticableTreeMixin implements Ok<Model> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
     return ok?.call(data);
   }
@@ -692,14 +690,14 @@ class _$Ok<Model> with DiagnosticableTreeMixin implements Ok<Model> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -764,6 +762,7 @@ class _$Ok<Model> with DiagnosticableTreeMixin implements Ok<Model> {
 abstract class Ok<Model> implements NetworkResponse<Model> {
   const factory Ok(final Model data) = _$Ok<Model>;
 
+  @override
   Model get data;
   @JsonKey(ignore: true)
   _$$OkCopyWith<Model, _$Ok<Model>> get copyWith =>
@@ -776,7 +775,7 @@ abstract class _$$InvalidParametersCopyWith<Model, $Res> {
           $Res Function(_$InvalidParameters<Model>) then) =
       __$$InvalidParametersCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -791,13 +790,13 @@ class __$$InvalidParametersCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$InvalidParameters<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -807,14 +806,14 @@ class __$$InvalidParametersCopyWithImpl<Model, $Res>
 class _$InvalidParameters<Model>
     with DiagnosticableTreeMixin
     implements InvalidParameters<Model> {
-  const _$InvalidParameters(this.message);
+  const _$InvalidParameters(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.invalidParameters(message: $message)';
+    return 'NetworkResponse<$Model>.invalidParameters(data: $data)';
   }
 
   @override
@@ -823,7 +822,7 @@ class _$InvalidParameters<Model>
     properties
       ..add(DiagnosticsProperty(
           'type', 'NetworkResponse<$Model>.invalidParameters'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -831,11 +830,12 @@ class _$InvalidParameters<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvalidParameters<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -849,50 +849,50 @@ class _$InvalidParameters<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return invalidParameters(message);
+    return invalidParameters(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return invalidParameters?.call(message);
+    return invalidParameters?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (invalidParameters != null) {
-      return invalidParameters(message);
+      return invalidParameters(data);
     }
     return orElse();
   }
@@ -951,10 +951,11 @@ class _$InvalidParameters<Model>
 }
 
 abstract class InvalidParameters<Model> implements NetworkResponse<Model> {
-  const factory InvalidParameters(final String message) =
+  const factory InvalidParameters(final Model data) =
       _$InvalidParameters<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$InvalidParametersCopyWith<Model, _$InvalidParameters<Model>>
       get copyWith => throw _privateConstructorUsedError;
@@ -966,7 +967,7 @@ abstract class _$$NoAuthCopyWith<Model, $Res> {
           _$NoAuth<Model> value, $Res Function(_$NoAuth<Model>) then) =
       __$$NoAuthCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -980,13 +981,13 @@ class __$$NoAuthCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$NoAuth<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -994,14 +995,14 @@ class __$$NoAuthCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NoAuth<Model> with DiagnosticableTreeMixin implements NoAuth<Model> {
-  const _$NoAuth(this.message);
+  const _$NoAuth(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.noAuth(message: $message)';
+    return 'NetworkResponse<$Model>.noAuth(data: $data)';
   }
 
   @override
@@ -1009,7 +1010,7 @@ class _$NoAuth<Model> with DiagnosticableTreeMixin implements NoAuth<Model> {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.noAuth'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1017,11 +1018,12 @@ class _$NoAuth<Model> with DiagnosticableTreeMixin implements NoAuth<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoAuth<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1033,50 +1035,50 @@ class _$NoAuth<Model> with DiagnosticableTreeMixin implements NoAuth<Model> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return noAuth(message);
+    return noAuth(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return noAuth?.call(message);
+    return noAuth?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (noAuth != null) {
-      return noAuth(message);
+      return noAuth(data);
     }
     return orElse();
   }
@@ -1135,9 +1137,10 @@ class _$NoAuth<Model> with DiagnosticableTreeMixin implements NoAuth<Model> {
 }
 
 abstract class NoAuth<Model> implements NetworkResponse<Model> {
-  const factory NoAuth(final String message) = _$NoAuth<Model>;
+  const factory NoAuth(final Model data) = _$NoAuth<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$NoAuthCopyWith<Model, _$NoAuth<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1149,7 +1152,7 @@ abstract class _$$NoAccessCopyWith<Model, $Res> {
           _$NoAccess<Model> value, $Res Function(_$NoAccess<Model>) then) =
       __$$NoAccessCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -1163,13 +1166,13 @@ class __$$NoAccessCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$NoAccess<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -1179,14 +1182,14 @@ class __$$NoAccessCopyWithImpl<Model, $Res>
 class _$NoAccess<Model>
     with DiagnosticableTreeMixin
     implements NoAccess<Model> {
-  const _$NoAccess(this.message);
+  const _$NoAccess(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.noAccess(message: $message)';
+    return 'NetworkResponse<$Model>.noAccess(data: $data)';
   }
 
   @override
@@ -1194,7 +1197,7 @@ class _$NoAccess<Model>
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.noAccess'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1202,11 +1205,12 @@ class _$NoAccess<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoAccess<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1218,50 +1222,50 @@ class _$NoAccess<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return noAccess(message);
+    return noAccess(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return noAccess?.call(message);
+    return noAccess?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (noAccess != null) {
-      return noAccess(message);
+      return noAccess(data);
     }
     return orElse();
   }
@@ -1320,9 +1324,10 @@ class _$NoAccess<Model>
 }
 
 abstract class NoAccess<Model> implements NetworkResponse<Model> {
-  const factory NoAccess(final String message) = _$NoAccess<Model>;
+  const factory NoAccess(final Model data) = _$NoAccess<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$NoAccessCopyWith<Model, _$NoAccess<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1334,7 +1339,7 @@ abstract class _$$BadRequestCopyWith<Model, $Res> {
           _$BadRequest<Model> value, $Res Function(_$BadRequest<Model>) then) =
       __$$BadRequestCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -1348,13 +1353,13 @@ class __$$BadRequestCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$BadRequest<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -1364,14 +1369,14 @@ class __$$BadRequestCopyWithImpl<Model, $Res>
 class _$BadRequest<Model>
     with DiagnosticableTreeMixin
     implements BadRequest<Model> {
-  const _$BadRequest(this.message);
+  const _$BadRequest(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.badRequest(message: $message)';
+    return 'NetworkResponse<$Model>.badRequest(data: $data)';
   }
 
   @override
@@ -1379,7 +1384,7 @@ class _$BadRequest<Model>
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.badRequest'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1387,11 +1392,12 @@ class _$BadRequest<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BadRequest<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1403,50 +1409,50 @@ class _$BadRequest<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return badRequest(message);
+    return badRequest(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return badRequest?.call(message);
+    return badRequest?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
-      return badRequest(message);
+      return badRequest(data);
     }
     return orElse();
   }
@@ -1505,9 +1511,10 @@ class _$BadRequest<Model>
 }
 
 abstract class BadRequest<Model> implements NetworkResponse<Model> {
-  const factory BadRequest(final String message) = _$BadRequest<Model>;
+  const factory BadRequest(final Model data) = _$BadRequest<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$BadRequestCopyWith<Model, _$BadRequest<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1519,7 +1526,7 @@ abstract class _$$NotFoundCopyWith<Model, $Res> {
           _$NotFound<Model> value, $Res Function(_$NotFound<Model>) then) =
       __$$NotFoundCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -1533,13 +1540,13 @@ class __$$NotFoundCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$NotFound<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -1549,14 +1556,14 @@ class __$$NotFoundCopyWithImpl<Model, $Res>
 class _$NotFound<Model>
     with DiagnosticableTreeMixin
     implements NotFound<Model> {
-  const _$NotFound(this.message);
+  const _$NotFound(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.notFound(message: $message)';
+    return 'NetworkResponse<$Model>.notFound(data: $data)';
   }
 
   @override
@@ -1564,7 +1571,7 @@ class _$NotFound<Model>
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.notFound'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1572,11 +1579,12 @@ class _$NotFound<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotFound<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1588,50 +1596,50 @@ class _$NotFound<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return notFound(message);
+    return notFound(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return notFound?.call(message);
+    return notFound?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (notFound != null) {
-      return notFound(message);
+      return notFound(data);
     }
     return orElse();
   }
@@ -1690,9 +1698,10 @@ class _$NotFound<Model>
 }
 
 abstract class NotFound<Model> implements NetworkResponse<Model> {
-  const factory NotFound(final String message) = _$NotFound<Model>;
+  const factory NotFound(final Model data) = _$NotFound<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$NotFoundCopyWith<Model, _$NotFound<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1704,7 +1713,7 @@ abstract class _$$ConflictCopyWith<Model, $Res> {
           _$Conflict<Model> value, $Res Function(_$Conflict<Model>) then) =
       __$$ConflictCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -1718,13 +1727,13 @@ class __$$ConflictCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$Conflict<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -1734,14 +1743,14 @@ class __$$ConflictCopyWithImpl<Model, $Res>
 class _$Conflict<Model>
     with DiagnosticableTreeMixin
     implements Conflict<Model> {
-  const _$Conflict(this.message);
+  const _$Conflict(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.conflict(message: $message)';
+    return 'NetworkResponse<$Model>.conflict(data: $data)';
   }
 
   @override
@@ -1749,7 +1758,7 @@ class _$Conflict<Model>
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.conflict'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1757,11 +1766,12 @@ class _$Conflict<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Conflict<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1773,50 +1783,50 @@ class _$Conflict<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return conflict(message);
+    return conflict(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return conflict?.call(message);
+    return conflict?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (conflict != null) {
-      return conflict(message);
+      return conflict(data);
     }
     return orElse();
   }
@@ -1875,9 +1885,10 @@ class _$Conflict<Model>
 }
 
 abstract class Conflict<Model> implements NetworkResponse<Model> {
-  const factory Conflict(final String message) = _$Conflict<Model>;
+  const factory Conflict(final Model data) = _$Conflict<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$ConflictCopyWith<Model, _$Conflict<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1889,7 +1900,7 @@ abstract class _$$UnProcessableCopyWith<Model, $Res> {
           $Res Function(_$UnProcessable<Model>) then) =
       __$$UnProcessableCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Model data});
 }
 
 /// @nodoc
@@ -1903,13 +1914,13 @@ class __$$UnProcessableCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = freezed,
   }) {
     return _then(_$UnProcessable<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Model,
     ));
   }
 }
@@ -1919,14 +1930,14 @@ class __$$UnProcessableCopyWithImpl<Model, $Res>
 class _$UnProcessable<Model>
     with DiagnosticableTreeMixin
     implements UnProcessable<Model> {
-  const _$UnProcessable(this.message);
+  const _$UnProcessable(this.data);
 
   @override
-  final String message;
+  final Model data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.unProcessable(message: $message)';
+    return 'NetworkResponse<$Model>.unProcessable(data: $data)';
   }
 
   @override
@@ -1935,7 +1946,7 @@ class _$UnProcessable<Model>
     properties
       ..add(
           DiagnosticsProperty('type', 'NetworkResponse<$Model>.unProcessable'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -1943,11 +1954,12 @@ class _$UnProcessable<Model>
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnProcessable<Model> &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -1960,50 +1972,50 @@ class _$UnProcessable<Model>
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return unProcessable(message);
+    return unProcessable(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return unProcessable?.call(message);
+    return unProcessable?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (unProcessable != null) {
-      return unProcessable(message);
+      return unProcessable(data);
     }
     return orElse();
   }
@@ -2062,9 +2074,10 @@ class _$UnProcessable<Model>
 }
 
 abstract class UnProcessable<Model> implements NetworkResponse<Model> {
-  const factory UnProcessable(final String message) = _$UnProcessable<Model>;
+  const factory UnProcessable(final Model data) = _$UnProcessable<Model>;
 
-  String get message;
+  @override
+  Model get data;
   @JsonKey(ignore: true)
   _$$UnProcessableCopyWith<Model, _$UnProcessable<Model>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2076,7 +2089,7 @@ abstract class _$$NoDataCopyWith<Model, $Res> {
           _$NoData<Model> value, $Res Function(_$NoData<Model>) then) =
       __$$NoDataCopyWithImpl<Model, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String data});
 }
 
 /// @nodoc
@@ -2090,12 +2103,12 @@ class __$$NoDataCopyWithImpl<Model, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? data = null,
   }) {
     return _then(_$NoData<Model>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -2104,14 +2117,14 @@ class __$$NoDataCopyWithImpl<Model, $Res>
 /// @nodoc
 
 class _$NoData<Model> with DiagnosticableTreeMixin implements NoData<Model> {
-  const _$NoData(this.message);
+  const _$NoData(this.data);
 
   @override
-  final String message;
+  final String data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NetworkResponse<$Model>.noData(message: $message)';
+    return 'NetworkResponse<$Model>.noData(data: $data)';
   }
 
   @override
@@ -2119,7 +2132,7 @@ class _$NoData<Model> with DiagnosticableTreeMixin implements NoData<Model> {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'NetworkResponse<$Model>.noData'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -2127,11 +2140,11 @@ class _$NoData<Model> with DiagnosticableTreeMixin implements NoData<Model> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoData<Model> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -2143,50 +2156,50 @@ class _$NoData<Model> with DiagnosticableTreeMixin implements NoData<Model> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Model data) ok,
-    required TResult Function(String message) invalidParameters,
-    required TResult Function(String message) noAuth,
-    required TResult Function(String message) noAccess,
-    required TResult Function(String message) badRequest,
-    required TResult Function(String message) notFound,
-    required TResult Function(String message) conflict,
-    required TResult Function(String message) unProcessable,
-    required TResult Function(String message) noData,
+    required TResult Function(Model data) invalidParameters,
+    required TResult Function(Model data) noAuth,
+    required TResult Function(Model data) noAccess,
+    required TResult Function(Model data) badRequest,
+    required TResult Function(Model data) notFound,
+    required TResult Function(Model data) conflict,
+    required TResult Function(Model data) unProcessable,
+    required TResult Function(String data) noData,
   }) {
-    return noData(message);
+    return noData(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Model data)? ok,
-    TResult? Function(String message)? invalidParameters,
-    TResult? Function(String message)? noAuth,
-    TResult? Function(String message)? noAccess,
-    TResult? Function(String message)? badRequest,
-    TResult? Function(String message)? notFound,
-    TResult? Function(String message)? conflict,
-    TResult? Function(String message)? unProcessable,
-    TResult? Function(String message)? noData,
+    TResult? Function(Model data)? invalidParameters,
+    TResult? Function(Model data)? noAuth,
+    TResult? Function(Model data)? noAccess,
+    TResult? Function(Model data)? badRequest,
+    TResult? Function(Model data)? notFound,
+    TResult? Function(Model data)? conflict,
+    TResult? Function(Model data)? unProcessable,
+    TResult? Function(String data)? noData,
   }) {
-    return noData?.call(message);
+    return noData?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Model data)? ok,
-    TResult Function(String message)? invalidParameters,
-    TResult Function(String message)? noAuth,
-    TResult Function(String message)? noAccess,
-    TResult Function(String message)? badRequest,
-    TResult Function(String message)? notFound,
-    TResult Function(String message)? conflict,
-    TResult Function(String message)? unProcessable,
-    TResult Function(String message)? noData,
+    TResult Function(Model data)? invalidParameters,
+    TResult Function(Model data)? noAuth,
+    TResult Function(Model data)? noAccess,
+    TResult Function(Model data)? badRequest,
+    TResult Function(Model data)? notFound,
+    TResult Function(Model data)? conflict,
+    TResult Function(Model data)? unProcessable,
+    TResult Function(String data)? noData,
     required TResult orElse(),
   }) {
     if (noData != null) {
-      return noData(message);
+      return noData(data);
     }
     return orElse();
   }
@@ -2245,9 +2258,10 @@ class _$NoData<Model> with DiagnosticableTreeMixin implements NoData<Model> {
 }
 
 abstract class NoData<Model> implements NetworkResponse<Model> {
-  const factory NoData(final String message) = _$NoData<Model>;
+  const factory NoData(final String data) = _$NoData<Model>;
 
-  String get message;
+  @override
+  String get data;
   @JsonKey(ignore: true)
   _$$NoDataCopyWith<Model, _$NoData<Model>> get copyWith =>
       throw _privateConstructorUsedError;
