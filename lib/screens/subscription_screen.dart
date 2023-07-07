@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../data/data.dart';
 import '../widgets/app_bar.dart';
 import '../data/colors.dart';
-import '../widgets/recommendations_section.dart';
+import '../widgets/util.dart';
 import 'all_subscription_screen.dart';
+import 'recommendation_screen.dart';
 
 class Subscription extends StatelessWidget {
   const Subscription({super.key});
@@ -12,73 +15,83 @@ class Subscription extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgLightGrey,
       appBar: const CustomAppBar(),
-      body:SafeArea(
-        child: SingleChildScrollView(
-          primary: false,
-          scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical:7.0),
-                child: SizedBox(
-                  height: 90.0,
-                  width: double.infinity ,
-                  child: Stack(
-                    alignment: Alignment.topLeft,
-                    children: [
-                      ListView.separated(
-                          scrollDirection: Axis.horizontal ,
-                          itemBuilder: (context, index) => buildSubsList(),
-                          separatorBuilder: (context, index) =>const SizedBox(width: 4.0,) ,
-                          itemCount: 10),
-                      MaterialButton(
-                        height: 80.0,
-                        minWidth: 40.0,
-                        onPressed: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                              builder: (context) =>  const All_subscription()
-                               )
-                          ) ;
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: SizedBox(
+                height: 90.0,
+                width: double.infinity,
+                child: Stack(
+                  alignment: Alignment.topLeft,
+                  children: [
+                    ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final video = homeScreenVideos[index];
+                          getVideos(index, 'v3/search');
+                          return buildSubsList(video, videosdata);
                         },
-                        color: mainComponentsGrey,
-                        child: const Text('All'),)
-                    ],
-                  ),
+                        separatorBuilder: (context, index) => const SizedBox(
+                              width: 4.0,
+                            ),
+                        itemCount: 20),
+                    MaterialButton(
+                      height: 80.0,
+                      minWidth: 40.0,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const All_subscription()));
+                      },
+                      color: mainComponentsGrey,
+                      child: const Text('All'),
+                    )
+                  ],
                 ),
               ),
-              const SizedBox(height: 1.0,),
-              const RecommendationsSection(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 1.0,
+            ),
+            const Recommendation_screen(),
+            //RecommendationsSection(),
+          ],
         ),
-      ) ,
+      ),
     );
   }
 }
-Widget buildSubsList(){
-  return const Column(
+
+Widget buildSubsList(Video video, Map data) {
+  return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(
         children: [
           CircleAvatar(
             radius: 30.0,
-            backgroundImage: AssetImage('assets/images/profile_screen/avatars/profile.png'),
+            backgroundImage: NetworkImage(
+                //data['thumbnails']['medium']['url']
+                video.miniatureImagePath),
           ),
         ],
       ),
-      SizedBox(height: 5.0,),
-      SizedBox(
+      const SizedBox(
+        height: 5.0,
+      ),
+      const SizedBox(
         width: 70.0,
-        child: Text('Mariam Hussien',
+        child: Text(
+          // data['channelTitle'],
+          'Mariam Hussien',
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              color: suvaGrey,
-              fontWeight:FontWeight.bold,
-              fontSize: 12.0),),
+              color: suvaGrey, fontWeight: FontWeight.bold, fontSize: 12.0),
+        ),
       )
     ],
   );

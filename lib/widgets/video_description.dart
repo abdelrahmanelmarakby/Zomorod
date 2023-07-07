@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../data/colors.dart';
 import '../widgets/util.dart';
 import 'package:timeago/timeago.dart' as timeago;
-
 import '../data/data.dart';
 
 class VideoDescription extends StatelessWidget {
@@ -14,8 +13,9 @@ class VideoDescription extends StatelessWidget {
       color: mainComponentsGrey,
       child: Column(
         children: [
+          //VideoShow(id: videId),
           VideoMiniature(),
-          const VideoDetailsPanel(),
+          VideoDetailsPanel(title: videoTitle),
         ],
       ),
     );
@@ -23,7 +23,8 @@ class VideoDescription extends StatelessWidget {
 }
 
 class VideoDetailsPanel extends StatelessWidget {
-  const VideoDetailsPanel({Key? key}) : super(key: key);
+  final String title;
+  const VideoDetailsPanel({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class VideoDetailsPanel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  //title,
                   currentVideo.title,
                   style: const TextStyle(
                     color: accentLightGrey,
@@ -56,11 +58,6 @@ class VideoDetailsPanel extends StatelessWidget {
                         text:
                             '${formatNumber(currentVideo.viewsCounter)} views • '
                             '${timeago.format(currentVideo.timestamp)} ',
-                      ),
-                      TextSpan(
-                        text: currentVideo.tags.join(' '),
-                        style: const TextStyle(
-                            color: linkBlue, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

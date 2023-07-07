@@ -6,47 +6,50 @@ import '../data/data.dart';
 
 class VideoCard extends StatelessWidget {
   final Video video;
+  final Map data;
 
-  const VideoCard({Key? key, required this.video}) : super(key: key);
+  const VideoCard({Key? key, required this.video, required this.data})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Stack(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VideoDetailPage(),
-                  ),
-                );
-              },
-              child: Image.network(
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const VideoDetailPage(),
+              ),
+            );
+          },
+          child: Stack(
+            children: [
+              Image.network(
+                // data['thumbnails']['medium']['url'],
                 video.miniatureImagePath,
                 height: 220.0,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-            ),
-            Positioned(
-              bottom: 8.0,
-              right: 8.0,
-              child: Container(
-                padding: const EdgeInsets.all(4.0),
-                color: Colors.black,
-                child: Text(
-                  video.duration,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: Colors.white),
+              Positioned(
+                bottom: 8.0,
+                right: 8.0,
+                child: Container(
+                  padding: const EdgeInsets.all(4.0),
+                  color: Colors.black,
+                  child: Text(
+                    video.duration,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(color: Colors.white),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
@@ -57,7 +60,7 @@ class VideoCard extends StatelessWidget {
               GestureDetector(
                 onTap: () => print('Navigate to profile'),
                 child: CircleAvatar(
-                  foregroundImage: NetworkImage(video.channel.imageUrl),
+                  foregroundImage: NetworkImage(video.miniatureImagePath),
                 ),
               ),
               const SizedBox(width: 8.0),
@@ -68,6 +71,7 @@ class VideoCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
+                        //data['title'],
                         video.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -79,7 +83,9 @@ class VideoCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        '${video.channel.name} • '
+                        '${
+                        // data['channelTitle']
+                        video.channel.name} • '
                         '${formatNumber(video.viewsCounter)} • '
                         '${timeago.format(video.timestamp)}',
                         maxLines: 2,

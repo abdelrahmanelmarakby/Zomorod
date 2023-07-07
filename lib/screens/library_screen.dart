@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zomorod/screens/downloads_screen.dart';
 import 'package:zomorod/screens/history_screen.dart';
+import 'package:zomorod/widgets/util.dart';
 import '../data/colors.dart';
 import '../data/data.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/history_card.dart';
-
 
 class LibraryTab extends StatelessWidget {
   const LibraryTab({super.key});
@@ -31,12 +32,8 @@ class LibraryTab extends StatelessWidget {
             ),
             trailing: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const History(
-                                video: null,
-                              )));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const History()));
                 },
                 child: const Text(
                   'Show All',
@@ -51,10 +48,14 @@ class LibraryTab extends StatelessWidget {
                 primary: false,
                 itemBuilder: (context, index) {
                   final video = homeScreenVideos[index];
+                  getVideos(index, 'v3/search');
                   return SizedBox(
                       height: 90.0,
                       width: 170.0,
-                      child: HistoryCard(video: video));
+                      child: HistoryCard(
+                        video: video,
+                        data: videosdata,
+                      ));
                 },
                 separatorBuilder: (context, index) => const SizedBox(
                       width: 5.0,
@@ -65,9 +66,15 @@ class LibraryTab extends StatelessWidget {
               thickness: 0.1,
               // height:0.5 ,
               color: Colors.white),
-          const ListTile(
-            leading: Icon(Icons.video_library, color: suvaGrey),
-            title: Text('Your videos', style: TextStyle(color: Colors.white)),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => YourVideo()));
+            },
+            child: const ListTile(
+              leading: Icon(Icons.video_library, color: suvaGrey),
+              title: Text('Your videos', style: TextStyle(color: Colors.white)),
+            ),
           ),
           GestureDetector(
             onTap: () {
@@ -110,11 +117,20 @@ class LibraryTab extends StatelessWidget {
             leading: Icon(Icons.add, color: linkBlue),
             title: Text('New Playlist', style: TextStyle(color: linkBlue)),
           ),
-          const ListTile(
-            leading: Icon(Icons.watch_later, color: suvaGrey),
-            title: Text('Watch later', style: TextStyle(color: Colors.white)),
-            subtitle: Text('Videos you save for later',
-                style: TextStyle(color: suvaGrey, fontSize: 12.0)),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const WatchLater_screen()),
+              );
+            },
+            child: const ListTile(
+              leading: Icon(Icons.watch_later, color: suvaGrey),
+              title: Text('Watch later', style: TextStyle(color: Colors.white)),
+              subtitle: Text('Videos you save for later',
+                  style: TextStyle(color: suvaGrey, fontSize: 12.0)),
+            ),
           ),
         ],
       ),

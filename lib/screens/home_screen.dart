@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:zomorod/widgets/util.dart';
 import '../data/data.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/video_card.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  Map ourData = {};
 
+  HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +20,15 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 60.0),
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
-                      (context, index) {
+                  (context, index) {
+                    getVideos(index, 'v3/search');
                     final video = homeScreenVideos[index];
-                    return VideoCard(video: video);
+                    return VideoCard(
+                      video: video,
+                      data: videosdata,
+                    );
                   },
-                  childCount: homeScreenVideos.length,
+                  childCount: 20,
                 ),
               ),
             ),

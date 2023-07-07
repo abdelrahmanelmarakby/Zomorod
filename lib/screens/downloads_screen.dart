@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zomorod/widgets/app_bar.dart';
-
 import '../data/data.dart';
 import '../widgets/util.dart';
 
@@ -24,13 +23,17 @@ class DownloadsScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             primary: false,
             itemBuilder: (context, index) {
+              getVideos(index + 3, 'v3/search');
               final video = homeScreenVideos[index];
-              return Download_page(video: video);
+              return Download_page(
+                video: video,
+                data: videosdata,
+              );
             },
             separatorBuilder: (context, index) => const SizedBox(
                   height: 15.0,
                 ),
-            itemCount: 8),
+            itemCount: 20),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:zomorod/widgets/video_card.dart';
 
 import '../../../../core/services/theme.dart';
 import '../../../../widgets/app_bar.dart';
+import '../../../../widgets/util.dart';
 import '../../../routes/app_pages.dart';
 import '../../profile_settings/views/pages/watch_time_stats.dart';
 import '../controllers/home_controller.dart';
@@ -22,22 +23,28 @@ class HomeView extends GetView<HomeController> {
         child: const AppDrawer(),
       ),
       appBar: const CustomAppBar(),
-      body: CustomScrollView(
-        primary: false,
-        slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.only(bottom: 60.0),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final video = homeScreenVideos[index];
-                  return VideoCard(video: video);
-                },
-                childCount: homeScreenVideos.length,
+      body: SafeArea(
+        child: CustomScrollView(
+          primary: false,
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.only(bottom: 60.0),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    getVideos(index, 'v3/search');
+                    final video = homeScreenVideos[index];
+                    return VideoCard(
+                      video: video,
+                      data: videosdata,
+                    );
+                  },
+                  childCount: 20,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

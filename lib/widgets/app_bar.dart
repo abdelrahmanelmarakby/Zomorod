@@ -17,10 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Center(
             child: Text(
               'ZOMOROD',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.white),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ) //Image.asset('assets/images/home_screen/logos/logo_dark.png'),
           ),

@@ -3,6 +3,7 @@ import '../data/colors.dart';
 import '../data/data.dart';
 import '../widgets/util.dart';
 
+
 class SubscriptionBar extends StatelessWidget {
   const SubscriptionBar({Key? key}) : super(key: key);
 
@@ -10,16 +11,17 @@ class SubscriptionBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: mainComponentsGrey,
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[ChannelInformation(), SubscriptionStatus()],
+        children: const <Widget>[ChannelInformation(), SubscriptionStatus()],
       ),
     );
   }
 }
 
 class ChannelInformation extends StatelessWidget {
+
   const ChannelInformation({Key? key}) : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class ChannelInformation extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(currentVideoDetailChannel.logoImagePath),
+                  image: NetworkImage(currentVideoDetailChannel.logoImagePath),
                   fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.circular(100.0),
@@ -62,7 +64,7 @@ class ChannelInformation extends StatelessWidget {
                 ),
                 Text(
                   '${formatNumber(currentVideoDetailChannel.subscribersCounter)}'
-                  ' subscribers',
+                      ' subscribers',
                   style: const TextStyle(color: textLightGrey, fontSize: 13),
                 ),
               ],
