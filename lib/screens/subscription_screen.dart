@@ -5,6 +5,7 @@ import '../data/colors.dart';
 import '../widgets/util.dart';
 import 'all_subscription_screen.dart';
 import 'recommendation_screen.dart';
+import '../core/resourses/color_manger.dart';
 
 class Subscription extends StatelessWidget {
   const Subscription({super.key});
@@ -12,7 +13,7 @@ class Subscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgLightGrey,
+      // backgroundColor: bgLightGrey,
       appBar: const CustomAppBar(),
       body: SafeArea(
         child: Column(
@@ -36,18 +37,21 @@ class Subscription extends StatelessWidget {
                               width: 4.0,
                             ),
                         itemCount: 20),
-                    MaterialButton(
-                      height: 80.0,
-                      minWidth: 40.0,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const All_subscription()));
-                      },
-                      color: mainComponentsGrey,
-                      child: const Text('All'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: MaterialButton(
+                        height: 80.0,
+                        minWidth: 40.0,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const All_subscription()));
+                        },
+                        color: ColorsManger.primary,
+                        child: const Text('All'),
+                      ),
                     )
                   ],
                 ),
@@ -73,9 +77,9 @@ Widget buildSubsList(Video video, Map data) {
         children: [
           CircleAvatar(
             radius: 30.0,
-            backgroundImage: NetworkImage(
-                //data['thumbnails']['medium']['url']
-                video.miniatureImagePath),
+            backgroundImage: NetworkImage(data['thumbnails']['medium']['url']
+                // video.miniatureImagePath
+                ),
           ),
         ],
       ),

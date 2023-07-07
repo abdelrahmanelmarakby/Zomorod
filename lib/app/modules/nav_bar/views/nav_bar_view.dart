@@ -33,7 +33,7 @@ class NavBarView extends GetView<NavBarController> {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-              //backgroundColor: linkBlue ,
+              backgroundColor: Get.isDarkMode ? Colors.black : Colors.white,
               selectedItemColor: linkBlue,
               type: BottomNavigationBarType.fixed,
               currentIndex: controller.selectedIndex,
