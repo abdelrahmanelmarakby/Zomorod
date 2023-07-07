@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../core/services/get_storage_helper.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -11,7 +12,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static var INITIAL =
+      CacheHelper.getUserToken != null ? Routes.HOME : Routes.LOGIN;
 
   static final routes = [
     GetPage(

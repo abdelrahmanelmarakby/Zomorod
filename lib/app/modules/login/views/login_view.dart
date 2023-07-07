@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
@@ -8,8 +9,12 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:get/get.dart';
+import 'package:zomorod/core/services/get_storage_helper.dart';
 
 import '../../../data/api/auth_apis.dart';
+import '../../../data/models/sign_in_model.dart';
+import '../../../data/models/signup_model.dart';
+import '../../../routes/app_pages.dart';
 import '../../home/views/home_view.dart';
 import '../controllers/login_controller.dart';
 
@@ -187,14 +192,18 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        component1(name, Icons.account_circle_outlined,
-                            'User name...', false, false),
                         if (!isLogin)
                           FadeIn(
                             duration: const Duration(milliseconds: 800),
-                            child: component1(email, Icons.email_outlined,
-                                'Email...', false, true),
+                            child: component1(
+                                name,
+                                Icons.account_circle_outlined,
+                                'User name...',
+                                false,
+                                true),
                           ),
+                        component1(email, Icons.alternate_email_outlined,
+                            'Email...', false, false),
                         component1(password, Icons.lock_outline, 'Password...',
                             true, false),
                         if (!isLogin)
@@ -207,16 +216,54 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                               child: component2(
                                 isLogin ? 'LOGIN' : 'Register'.toUpperCase(),
                                 2.58,
-                                () {
+                                () async {
+                                  if ((confirmPassword.text != password.text) &&
+                                      isLogin != true) {
+                                    Fluttertoast.showToast(
+                                        msg:
+                                            'confirm password and password mismatch');
+                                    return;
+                                  }
+                                  if (!email.text.isEmail) {
+                                    Fluttertoast.showToast(
+                                        msg: 'Email is not correct');
+                                    return;
+                                  }
+                                  if (password.text.length < 6) {
+                                    Fluttertoast.showToast(
+                                        msg:
+                                            'password should be 6 digits at least');
+                                    return;
+                                  }
                                   if (isLogin) {
-                                    AuthApis.login(
+                                    SigninModel? model = await AuthApis.login(
                                         email: email.text,
                                         password: password.text);
+                                    if (model?.error != null) {
+                                      BotToast.showText(
+                                          text: model!.error ??
+                                              "Something went wrong");
+                                    } else {
+                                      CacheHelper.cacheToken(
+                                          token: model?.accessToken ?? "");
+                                      Get.toNamed(Routes.HOME);
+                                    }
                                   } else {
-                                    AuthApis.register(
-                                        name: name.text,
-                                        email: email.text,
-                                        password: password.text);
+                                    SignupModel? model =
+                                        await AuthApis.register(
+                                            name: name.text,
+                                            email: email.text,
+                                            password: password.text);
+                                    if (model?.error != null) {
+                                      BotToast.showText(
+                                          text: model!.error ??
+                                              "Something went wrong");
+                                    } else {
+                                      CacheHelper.cacheToken(
+                                          token: model?.authorisation?.token ??
+                                              "");
+                                      Get.toNamed(Routes.HOME);
+                                    }
                                   }
                                   HapticFeedback.lightImpact();
                                 },
@@ -256,8 +303,6 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                             setState(() {
                               isLogin = !isLogin;
                             });
-                            Fluttertoast.showToast(
-                                msg: 'Create a new account button pressed');
                           },
                         ),
                         SizedBox(height: size.height * .05),

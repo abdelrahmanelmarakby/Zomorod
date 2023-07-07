@@ -1,6 +1,7 @@
 class SignupModel {
   String? status;
   String? message;
+  String? error;
   User? user;
   Authorisation? authorisation;
 
@@ -8,6 +9,8 @@ class SignupModel {
 
   SignupModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
+    error = json['error'];
+
     message = json['message'];
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     authorisation = json['authorisation'] != null
@@ -18,6 +21,8 @@ class SignupModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['status'] = status;
+    data['error'] = error;
+
     data['message'] = message;
     if (user != null) {
       data['user'] = user!.toJson();

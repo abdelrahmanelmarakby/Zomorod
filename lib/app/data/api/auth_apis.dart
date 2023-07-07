@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:zomorod/core/services/shared_prefs.dart';
 
@@ -17,8 +18,8 @@ class AuthApis {
       path: APIKeys.register,
       headers: {
         'Accept': 'application/json',
-        'Authorization':
-            'Bearer ${SharedPrefService(prefs: globalPrefs).getToken()}',
+        // 'Authorization':
+        //     'Bearer ${SharedPrefService(prefs: globalPrefs).getToken()}',
       },
       data: NetworkRequestBody.fromData(
         FormData.fromMap(
@@ -33,25 +34,34 @@ class AuthApis {
         return data;
       },
       unProcessable: (data) {
+        BotToast.showText(text: data.errors[0]);
         return data;
       },
       orElse: () {},
       badRequest: (data) {
+        BotToast.showText(text: data.errors[0]);
+
         return data;
       },
       conflict: (data) {
         return data;
       },
       invalidParameters: (data) {
+        BotToast.showText(text: data.errors[0]);
+
         return data;
       },
       noAccess: (data) {
+        BotToast.showText(text: data.errors[0]);
+
         return data;
       },
       noData: (data) {
         return data;
       },
       notFound: (data) {
+        BotToast.showText(text: data.errors[0]);
+
         return data;
       },
     );
@@ -67,8 +77,8 @@ class AuthApis {
       path: APIKeys.login,
       headers: {
         'Accept': 'application/json',
-        'Authorization':
-            'Bearer ${SharedPrefService(prefs: globalPrefs).getToken()}',
+        // 'Authorization':
+        //     'Bearer ${SharedPrefService(prefs: globalPrefs).getToken()}',
       },
       data: NetworkRequestBody.fromData(
         FormData.fromMap(
