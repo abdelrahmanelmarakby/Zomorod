@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-
-import 'font_manger.dart';
+import 'package:zomorod/core/resourses/font_manger.dart';
 
 //TextStyle builder method
 TextStyle _getTextStyle({
@@ -8,48 +7,125 @@ TextStyle _getTextStyle({
   String? fontFamily,
   Color? color,
   FontWeight? fontWeight,
+  TextOverflow? overFlow = TextOverflow.ellipsis,
+  TextDecoration decoration = TextDecoration.none,
 }) {
   return TextStyle(
-    fontSize: fontSize,
-    fontFamily: fontFamily,
-    color: color,
-    fontWeight: fontWeight,
-  );
+      fontSize: fontSize,
+      fontFamily: fontFamily,
+      color: color,
+      decoration: decoration,
+      fontWeight: fontWeight,
+      overflow: overFlow);
 }
 
-///regular TextStyle
-TextStyle getRegularTextStyle(
-    {double fontSize = FontSize.small, Color? color}) {
-  return _getTextStyle(
-      fontSize: fontSize,
-      fontFamily: FontConstants.fontName,
-      color: color,
-      fontWeight: FontWeights.regular);
-}
+class StylesManager {
+  ///regular TextStyle
+  static TextStyle regular(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        fontFamily: FontNames.fontName,
+        color: color,
+        decoration: decoration,
+        fontWeight: FontWeights.regular);
+  }
 
-///light TextStyle
-TextStyle getLightTextStyle({double fontSize = FontSize.small, Color? color}) {
-  return _getTextStyle(
-      fontSize: fontSize,
-      fontFamily: FontConstants.fontName,
-      color: color,
-      fontWeight: FontWeights.light);
-}
+// Bold TextStyle
+  static TextStyle bold(
+      {double fontSize = 14,
+      Color? color,
+      TextOverflow overflow = TextOverflow.ellipsis,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        fontFamily: FontNames.fontName,
+        decoration: decoration,
+        color: color,
+        overFlow: overflow,
+        fontWeight: FontWeights.bold);
+  }
 
-///medium TextStyle
-TextStyle getMediumTextStyle({double fontSize = FontSize.small, Color? color}) {
-  return _getTextStyle(
-      fontSize: fontSize,
-      fontFamily: FontConstants.fontName,
-      color: color,
-      fontWeight: FontWeights.medium);
-}
+// Medium TextStyle
+  static TextStyle medium(
+      {double fontSize = 14,
+      Color? color,
+      TextOverflow overflow = TextOverflow.ellipsis,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        overFlow: overflow,
+        fontFamily: FontNames.fontName,
+        decoration: decoration,
+        color: color,
+        fontWeight: FontWeights.regular);
+  }
 
-///bold TextStyle
-TextStyle getBoldTextStyle({double fontSize = FontSize.large, Color? color}) {
-  return _getTextStyle(
-      fontSize: fontSize,
-      fontFamily: FontConstants.fontName,
-      color: color,
-      fontWeight: FontWeights.bold);
+// Light TextStyle
+  static TextStyle light(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        fontFamily: FontNames.fontName,
+        decoration: decoration,
+        overFlow: TextOverflow.visible,
+        color: color,
+        fontWeight: FontWeights.light);
+  }
+
+// SemiBold TextStyle
+  static TextStyle semiBold(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        fontFamily: FontNames.fontName,
+        decoration: decoration,
+        color: color,
+        fontWeight: FontWeights.semiBold);
+  }
+
+// ExtraBold TextStyle
+  static TextStyle extraBold(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        fontFamily: FontNames.fontName,
+        decoration: decoration,
+        color: color,
+        fontWeight: FontWeights.extraBold);
+  }
+
+// Black TextStyle
+  static TextStyle black(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        decoration: decoration,
+        fontFamily: FontNames.fontName,
+        color: color,
+        fontWeight: FontWeights.black);
+  }
+
+// Thin TextStyle
+  static TextStyle thin(
+      {double fontSize = 14,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none}) {
+    return _getTextStyle(
+        fontSize: fontSize,
+        decoration: decoration,
+        fontFamily: FontNames.fontName,
+        color: color,
+        fontWeight: FontWeights.extraBold);
+  }
 }

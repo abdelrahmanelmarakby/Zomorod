@@ -1,83 +1,40 @@
 import 'package:flutter/material.dart';
 
-class ColorsManger {
+class ColorsManager {
   static const Color primary = Color(0xff346751);
-  static const Color darkGrey = Color(0xFF484848);
-  static const Color hintTextColor = Color(0xFF738594);
-  static const Color orange = Color(0xFFFF5B5B);
-  static const Color grey = Color(0xFF757575);
-  static const Color lightGrey = Color(0xFFBDBDBD);
-  static const Color grey1 = Color(0xFFF5F5F5);
-  static const Color grey2 = Color(0xFFEEEEEE);
+  static const Color accent = Color.fromARGB(255, 2, 30, 100);
   static const Color white = Color(0xFFFFFFFF);
-  static const Color error = Color(0xFFB00020);
-  static const Color success = Color(0xFF00C853);
-  static const Color red = Color(0xFFFF0000);
-  static const Color black = Color(0xFF000000);
-  static const Color blue = Color(0xFF35517A);
-  static const Color dotColor = Color(0xFF3E4F94);
-  static const Color lightBlue = Color(0xFF009AE2);
-  static const Color pink = Color(0xFFF72585);
-  static const Color yellow = Color(0xFFFDC500);
-  static const Color green = Color(0xFF48BA68);
-  static const Color dotedBorder = Color(0xFFFC992D);
-  static const Color vouchersColor = Color(0xFFFDF3E9);
+  static const Color selection = Color(0xFF3E6FCF);
 
-  static const LinearGradient simpleGradients = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      Color(0xFF3548AE),
-      Color(0xFFA324D6),
-    ],
-    stops: [0.3, 0.7],
-  );
-  static const LinearGradient multiGradients = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      Color(0xFF13B1AD),
-      Color(0xFFD52DF2),
-    ],
-    stops: [0.1, 0.9],
-  );
-  static const LinearGradient buttonGradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.topRight,
-    colors: [
-      Color(0xFF1E96FC),
-      Color(0xff80DC74),
-    ],
-  );
-  static const LinearGradient currentAddressGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      Color(0xFF1E96FC),
-      Color(0xff80DC74),
-    ],
-  );
-  static LinearGradient addressGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      const Color(0xff4F4944).withOpacity(.3),
-      const Color(0xFF4F4944).withOpacity(.5),
-    ],
-  );
-  static LinearGradient shimmerGradient = const LinearGradient(
-    colors: [
-      Color(0xFFEBEBF4),
-      Color(0xFFF4F4F4),
-      Color(0xFFEBEBF4),
-    ],
-    stops: [
-      0.1,
-      0.3,
-      0.4,
-    ],
-    begin: Alignment(-1.0, -0.3),
-    end: Alignment(1.0, 0.3),
-    tileMode: TileMode.clamp,
-  );
+  static const Color offWhite = Color(0xFFF3F3F3);
+  static const Color veryLightGrey = Color(0xFFCDCDCD);
+  static const Color checkBoxBorderColor = Color(0xFFD9D9D9);
+  static const Color lightGrey = Color(0xFF9E9E9E);
+  static const Color grey = Color(0xFF8C8C8C); //#8C8C8C
+  static const Color darkGrey = Color(0xFF7F7F7F);
+  static const Color veryDarkGrey = Color(0xFF505050);
+  static const Color charcoal = Color(0xFF222222);
+  static const Color black = Color(0xFF000000);
+  static const Color error = Color(0xFFB00020);
+  static const Color red = Color(0xFFFA5F5F);
+  static const Color success = Color(0xFF00C853);
+  static MaterialStateProperty<Color?> greyMatrialColor =
+      MaterialStateColor.resolveWith((states) {
+    if (states.contains(MaterialState.disabled)) {
+      return white; // Use a lighter shade of grey when disabled
+    }
+    return white; // Use a darker shade of grey for other states
+  });
+
+  static Color getShade(Color color, {bool darker = false, double value = .1}) {
+    assert(value >= 0 && value <= 1, 'shade values must be between 0 and 1');
+
+    final hsl = HSLColor.fromColor(color);
+    final hslDark = hsl.withLightness(
+      (darker ? (hsl.lightness - value) : (hsl.lightness + value))
+          .clamp(0.0, 1.0),
+    );
+
+    return hslDark.toColor();
+  }
 }

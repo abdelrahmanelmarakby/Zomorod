@@ -39,7 +39,7 @@ class ProfileSettingsView extends GetView<ProfileSettingsController> {
               title: const Text("Name"),
               subtitle: Text(
                 "Fatma Maged 💚✨",
-                style: getLightTextStyle(color: Colors.grey),
+                style: StylesManager.light(color: Colors.grey),
               ),
               trailing: const Icon(Iconsax.edit),
             ),
@@ -48,7 +48,7 @@ class ProfileSettingsView extends GetView<ProfileSettingsController> {
               title: const Text("Nickname"),
               subtitle: Text(
                 "💚💚💚",
-                style: getLightTextStyle(color: Colors.grey),
+                style: StylesManager.light(color: Colors.grey),
               ),
               trailing: const Icon(Iconsax.edit),
             ),
@@ -57,7 +57,7 @@ class ProfileSettingsView extends GetView<ProfileSettingsController> {
               title: const Text("Channel link"),
               subtitle: Text(
                 "zomorod.com/fatma_maged",
-                style: getLightTextStyle(color: Colors.grey),
+                style: StylesManager.light(color: Colors.grey),
               ),
               trailing: const Icon(Iconsax.link_1),
             ),
@@ -66,7 +66,7 @@ class ProfileSettingsView extends GetView<ProfileSettingsController> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 "Privacy",
-                style: getBoldTextStyle(),
+                style: StylesManager.bold(),
               ),
             ),
             Column(

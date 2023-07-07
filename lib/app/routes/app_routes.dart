@@ -8,6 +8,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const PROFILE_SETTINGS = _Paths.PROFILE_SETTINGS;
   static const NAVBAR = _Paths.NAVBAR;
+  static const SEARCH = _Paths.SEARCH;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const PROFILE_SETTINGS = '/profile-settings';
+  static const SEARCH = '/search';
 }

@@ -49,7 +49,7 @@ class Subscription extends StatelessWidget {
                                   builder: (context) =>
                                       const All_subscription()));
                         },
-                        color: ColorsManger.primary,
+                        color: ColorsManager.primary,
                         child: const Text('All'),
                       ),
                     )

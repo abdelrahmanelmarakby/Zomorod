@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:zomorod/app/modules/search/views/search_view.dart';
 
 import '../../core/services/get_storage_helper.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -9,6 +10,7 @@ import '../modules/nav_bar/bindings/nav_bar_binding.dart';
 import '../modules/nav_bar/views/nav_bar_view.dart';
 import '../modules/profile_settings/bindings/profile_settings_binding.dart';
 import '../modules/profile_settings/views/profile_settings_view.dart';
+import '../modules/search/bindings/search_binding.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -37,6 +39,11 @@ class AppPages {
       name: _Paths.NAVBAR,
       page: () => const NavBarView(),
       binding: NavBarBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH,
+      page: () => const SearchView(),
+      binding: SearchBinding(),
     ),
   ];
 }

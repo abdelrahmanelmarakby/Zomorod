@@ -49,7 +49,6 @@ dependencies:
   responsive_framework: ^0.2.0
   mrx_charts: ^0.1.3
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -86,28 +85,17 @@ flutter:
     - assets/images/video_detail/logos/
     - assets/images/video_detail/miniatures/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal_Light.ttf
+          weight: 300
+        - asset: assets/fonts/Tajawal_Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Tajawal_Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tajawal_Bold.ttf
+          weight: 700
+    - family: SuiizIcons
+      fonts:
+        - asset: assets/fonts/SuiizIcons.ttf

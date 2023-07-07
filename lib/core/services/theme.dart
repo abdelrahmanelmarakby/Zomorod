@@ -5,8 +5,8 @@ import 'package:get_storage/get_storage.dart';
 import '../resourses/theme_manger.dart';
 
 class Themes {
-  static final light = getApplicationTheme();
-  static final dark = ThemeData.dark(useMaterial3: true);
+  static final light = ThemeManager.lightTheme;
+  static final dark = ThemeManager.darkTheme;
 }
 
 class ThemeService {

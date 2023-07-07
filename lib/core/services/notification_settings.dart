@@ -20,7 +20,7 @@ Future<void> onBackgroundMessage(RemoteMessage message) async {
     displayOnForeground: true,
     displayOnBackground: true,
     wakeUpScreen: true,
-    backgroundColor: ColorsManger.primary,
+    backgroundColor: ColorsManager.primary,
     color: Colors.white,
   ));
   print('onBackgroundMessage: $message');
@@ -45,7 +45,7 @@ class FCM {
               displayOnForeground: true,
               displayOnBackground: true,
               wakeUpScreen: true,
-              backgroundColor: ColorsManger.primary,
+              backgroundColor: ColorsManager.primary,
               color: Colors.white,
             )));
   }
@@ -72,7 +72,7 @@ class FCM {
             displayOnForeground: true,
             displayOnBackground: true,
             wakeUpScreen: true,
-            backgroundColor: ColorsManger.primary,
+            backgroundColor: ColorsManager.primary,
             color: Colors.white,
           ));
         }
