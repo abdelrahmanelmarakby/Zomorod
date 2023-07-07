@@ -6,17 +6,19 @@ import '../../../../../core/resourses/color_manger.dart';
 class SearchInput extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
+  final void Function(String)? onSubmitted;
   const SearchInput(
-      {required this.textController, required this.hintText, Key? key})
+      {required this.textController,
+      required this.hintText,
+      this.onSubmitted,
+      Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: textController,
-      onChanged: (value) {
-        //Do something wi
-      },
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         prefixIcon: const Icon(
           Icons.search,

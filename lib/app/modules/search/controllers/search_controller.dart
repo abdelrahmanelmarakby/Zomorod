@@ -1,23 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/api/search_apis.dart';
+import '../../../data/models/search_model.dart';
+
 class SearchController extends GetxController {
-  //TODO: Implement SearchController
+  final searchController = TextEditingController();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  SearchModel? searchModel;
+  Future<SearchModel?> search(String query) async {
+    searchModel = await SearchApis.search(query);
+
+    update();
+    return searchModel;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

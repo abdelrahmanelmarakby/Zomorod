@@ -4,10 +4,14 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:zomorod/core/extensions/num.dart';
 import 'package:zomorod/core/resourses/sizes_manager.dart';
+import 'package:zomorod/data/data.dart';
 
 import '../../../../core/resourses/color_manger.dart';
 import '../../../../core/resourses/styles_manger.dart';
 import '../../../../core/services/theme.dart';
+import '../../../../widgets/video_card.dart';
+import '../../../data/api/search_apis.dart';
+import '../../../data/models/search_model.dart';
 import '../controllers/search_controller.dart';
 import 'widgets/serach_input.dart';
 
@@ -16,23 +20,43 @@ class SearchView extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SearchView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'SearchView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+        appBar: const SearchAppBar(),
+        body: GetBuilder(
+          builder: (SearchController controller) => FutureBuilder<SearchModel?>(
+            future: controller.search(controller.searchController.text),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                SearchModel? searchData = snapshot.data;
+
+                return ListView.builder(
+                    itemCount: searchData?.items?.length ?? 0,
+                    itemBuilder: (context, index) => VideoCard(
+                        video: Video(
+                            searchData?.items?[index].snippet?.thumbnails?.high
+                                    ?.url ??
+                                "",
+                            searchData?.items?[index].snippet?.title ?? "",
+                            Channel(searchData
+                                    ?.items?[index].snippet?.channelTitle ??
+                                ""),
+                            DateTime.parse(searchData
+                                    ?.items?[index].snippet?.publishTime ??
+                                "")),
+                        data: const {}));
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                );
+              }
+            },
+          ),
+        ));
   }
 }
 
-class HomeAppBar extends GetWidget<SearchController>
+class SearchAppBar extends GetWidget<SearchController>
     implements PreferredSizeWidget {
-  const HomeAppBar({
+  const SearchAppBar({
     super.key,
   });
 
@@ -40,91 +64,18 @@ class HomeAppBar extends GetWidget<SearchController>
   Widget build(
     BuildContext context,
   ) {
-    //final themeMode = ref.watch(themeProvider);
-
     return AppBar(
       elevation: 0,
-      backgroundColor: ColorsManager.primary,
+      backgroundColor: Colors.transparent,
       scrolledUnderElevation: 0,
       centerTitle: false,
-      leadingWidth: 66.h,
       titleSpacing: Sizes.size8,
-      actions: [
-        InkWell(
-          child: Container(
-            decoration: BoxDecoration(
-                color: context.isDarkMode
-                    ? ColorsManager.veryDarkGrey
-                    : ColorsManager.offWhite,
-                borderRadius: BorderRadius.circular(12.w)),
-            height: 40.h,
-            width: 40.h,
-            child: Center(
-              child: Icon(
-                Iconsax.message,
-                size: Sizes.size16.h,
-              ),
-            ),
-          ),
-        ),
-        Sizes.size8.w.widthSizedBox,
-        InkWell(
-          onTap: () => ThemeService().switchTheme(),
-          child: Container(
-            decoration: BoxDecoration(
-                color: context.isDarkMode
-                    ? ColorsManager.veryDarkGrey
-                    : ColorsManager.offWhite,
-                borderRadius: BorderRadius.circular(12.w)),
-            height: 40.h,
-            width: 40.h,
-            child: Center(
-              child: Badge(
-                backgroundColor: ColorsManager.error,
-                child: Icon(
-                  Iconsax.notification,
-                  size: Sizes.size16.h,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Sizes.size8.w.widthSizedBox,
-        InkWell(
-          onTap: () => ThemeService().switchTheme(),
-          child: Container(
-            decoration: BoxDecoration(
-              color: context.isDarkMode
-                  ? ColorsManager.veryDarkGrey
-                  : ColorsManager.offWhite,
-              borderRadius: BorderRadius.circular(12.w),
-            ),
-            height: 40.h,
-            width: 60.h,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "50",
-                    style: StylesManager.medium(color: Colors.orangeAccent),
-                  ),
-                  Sizes.size4.w.widthSizedBox,
-                  Icon(
-                    Iconsax.coin,
-                    size: Sizes.size16.h,
-                    color: Colors.orange,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Sizes.size8.widthSizedBox,
-      ],
       title: SearchInput(
         hintText: 'search',
-        textController: TextEditingController(),
+        textController: controller.searchController,
+        onSubmitted: (query) async {
+          await SearchApis.search(query);
+        },
       ),
     );
   }

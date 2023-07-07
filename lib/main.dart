@@ -8,12 +8,13 @@ import 'package:zomorod/app.dart';
 import 'package:get/get.dart';
 import 'core/global/const.dart';
 import 'core/services/get_storage_helper.dart';
+import 'core/services/network_service.dart/dio_helper.dart';
 import 'core/services/shared_prefs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final pref = await SharedPreferences.getInstance();
-
+  DioHelper.init();
   await GetStorage.init();
   log(CacheHelper.getUserToken.toString());
   globalPrefs = pref;

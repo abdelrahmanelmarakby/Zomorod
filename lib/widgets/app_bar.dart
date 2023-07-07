@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../app/routes/app_pages.dart';
 import '../screens/user_profile_screen.dart';
 import '../data/data.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -28,7 +30,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           icon: const Icon(Icons.search),
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(Routes.SEARCH);
+          },
         ),
         IconButton(
           icon: CircleAvatar(
