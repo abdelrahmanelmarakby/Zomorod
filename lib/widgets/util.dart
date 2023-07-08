@@ -9,6 +9,7 @@ import '../data/data.dart';
 import '../screens/video_detail_screen.dart';
 import 'app_bar.dart';
 
+
 String formatNumber(int value) {
   const units = <int, String>{
     1000000000: 'B',
