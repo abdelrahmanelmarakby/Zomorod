@@ -96,7 +96,7 @@ class LibraryTab extends StatelessWidget {
               thickness: 0.1,
               // height:0.5 ,
               color: Colors.white),
-          const Padding(
+           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

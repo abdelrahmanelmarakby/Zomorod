@@ -77,8 +77,9 @@ Widget buildSubsList(Video video, Map data) {
         children: [
           CircleAvatar(
             radius: 30.0,
-            backgroundImage: NetworkImage(data['thumbnails']['medium']['url']
-                // video.miniatureImagePath
+            backgroundImage: NetworkImage(
+                //data['thumbnails']['medium']['url']
+                 video.miniatureImagePath
                 ),
           ),
         ],
@@ -86,11 +87,11 @@ Widget buildSubsList(Video video, Map data) {
       const SizedBox(
         height: 5.0,
       ),
-      const SizedBox(
+       SizedBox(
         width: 70.0,
         child: Text(
-          // data['channelTitle'],
-          'Mariam Hussien',
+           data['channelTitle'],
+          //'Mariam Hussien',
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
               color: suvaGrey, fontWeight: FontWeight.bold, fontSize: 12.0),

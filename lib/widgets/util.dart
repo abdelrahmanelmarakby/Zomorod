@@ -162,8 +162,8 @@ class History_page extends StatelessWidget {
                 );
               },
               child: Image.network(
-                //data['thumbnails']['medium']['url'],
-                video.miniatureImagePath,
+                data['thumbnails']['medium']['url'],
+                //video.miniatureImagePath,
                 height: 110.0,
                 width: 190.0,
                 fit: BoxFit.cover,
@@ -202,8 +202,8 @@ class History_page extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          //data['title'],
-                          video.title,
+                          data['title'],
+                          //video.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
@@ -214,11 +214,12 @@ class History_page extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          '${ //data['channelTitle']
-                          video.channel.name} • '
+                          '${ data['channelTitle']
+                          //video.channel.name
+                          } • '
                           '${formatNumber(video.viewsCounter)} • '
                           '${timeago.format(
-                              //data['publishedAt']
+
                               video.timestamp)}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -270,8 +271,8 @@ class Download_page extends StatelessWidget {
                 );
               },
               child: Image.network(
-                //data['thumbnails']['medium']['url'],
-                video.miniatureImagePath,
+                data['thumbnails']['medium']['url'],
+                //video.miniatureImagePath,
                 height: 110.0,
                 width: 190.0,
                 fit: BoxFit.cover,
@@ -310,8 +311,8 @@ class Download_page extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          //data['title'],
-                          video.title,
+                          data['title'],
+                         // video.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
@@ -323,8 +324,9 @@ class Download_page extends StatelessWidget {
                       Flexible(
                         child: Text(
                           '${
-                          // data['channelTitle']
-                          video.channel.name} • '
+                           data['channelTitle']
+                          //video.channel.name
+                          } • '
                           '${formatNumber(video.viewsCounter)} • '
                           '${timeago.format(video.timestamp)}',
                           maxLines: 1,
@@ -379,8 +381,8 @@ class Recommendation_page extends StatelessWidget {
                   );
                 },
                 child: Image.network(
-                  // data['thumbnails']['medium']['url'],
-                  video.miniatureImagePath,
+                   data['thumbnails']['medium']['url'],
+                 // video.miniatureImagePath,
                   height: 250.0,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -423,8 +425,8 @@ class Recommendation_page extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            //data['title'],
-                            video.title,
+                            data['title'],
+                            //video.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
@@ -436,8 +438,9 @@ class Recommendation_page extends StatelessWidget {
                         Flexible(
                           child: Text(
                             '${
-                            // data['channelTitle']
-                            video.channel.name} • '
+                             data['channelTitle']
+                            //video.channel.name
+    } • '
                             '${formatNumber(video.viewsCounter)} • '
                             '${timeago.format(video.timestamp)}',
                             maxLines: 1,
@@ -518,7 +521,7 @@ class YourVideo extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    getVideos(index + 7, 'v3/search');
+                    getVideos(index + 1, 'v3/search');
                     final video = homeScreenVideos[index];
                     return VideoCard(
                       video: video,

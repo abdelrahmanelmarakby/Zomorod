@@ -10,7 +10,7 @@ class CommentsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: mainComponentsGrey,
-      child: const Padding(
+      child:  Padding(
         padding: EdgeInsets.only(bottom: 15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

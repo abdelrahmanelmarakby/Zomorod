@@ -27,8 +27,8 @@ class HistoryCard extends StatelessWidget {
                 );
               },
               child: Image.network(
-                //data['thumbnails']['medium']['url'],
-                video.miniatureImagePath,
+                data['thumbnails']['medium']['url'],
+               // video.miniatureImagePath,
                 height: 90.0,
                 width: 170.0,
                 fit: BoxFit.cover,
@@ -64,8 +64,8 @@ class HistoryCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        //data['title'],
-                        video.title,
+                        data['title'],
+                        //video.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
@@ -76,8 +76,9 @@ class HistoryCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        '${ //data['channelTitle']
-                        video.channel.name} • '
+                        '${ data['channelTitle']
+                        //video.channel.name
+    } • '
                         '${formatNumber(video.viewsCounter)} • '
                         '${timeago.format(video.timestamp)}',
                         maxLines: 1,

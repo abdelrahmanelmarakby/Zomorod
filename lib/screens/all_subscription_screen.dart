@@ -13,7 +13,7 @@ class All_subscription extends StatelessWidget {
         appBar: const CustomAppBar(),
         body: Column(
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(right: 10.0, top: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -77,8 +77,8 @@ class All_subscription extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text(
-                    //data['channelTitle'],
-                    video.channel.name,
+                    data['channelTitle'],
+                    //video.channel.name,
                     style:
                         const TextStyle(color: Colors.white, fontSize: 16.0)),
                 const SizedBox(
