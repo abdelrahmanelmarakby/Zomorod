@@ -352,6 +352,8 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
               border: InputBorder.none,
               hintMaxLines: 1,
               hintText: hintText,
+              filled: true,
+              fillColor: Colors.transparent,
               hintStyle:
                   TextStyle(fontSize: 14, color: Colors.white.withOpacity(.5)),
             ),
