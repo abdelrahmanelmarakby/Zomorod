@@ -72,7 +72,7 @@ class VideoCard extends StatelessWidget {
                     Flexible(
                       child: Text(
                         data['title'],
-                       // video.title,
+                      // video.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
