@@ -13,8 +13,8 @@ class VideoDescription extends StatelessWidget {
       color: mainComponentsGrey,
       child: Column(
         children: [
-          //VideoShow(id: videId),
-          VideoMiniature(),
+          VideoShow(id: videId),
+          //VideoMiniature(),
           VideoDetailsPanel(title: videoTitle),
         ],
       ),
@@ -41,8 +41,8 @@ class VideoDetailsPanel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  //title,
-                  currentVideo.title,
+                  title,
+                  //currentVideo.title,
                   style: const TextStyle(
                     color: accentLightGrey,
                     fontWeight: FontWeight.bold,
