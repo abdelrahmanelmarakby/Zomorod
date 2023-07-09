@@ -10,16 +10,16 @@ class Video {
   final int dislikesCounter;
 
   Video(
-      this.miniatureImagePath,
-      this.title,
-      this.channel,
-      this.timestamp, {
-        this.tags = const [],
-        this.viewsCounter = 0,
-        this.likesCounter = 0,
-        this.dislikesCounter = 0,
-        this.duration = '00:00',
-      });
+    this.miniatureImagePath,
+    this.title,
+    this.channel,
+    this.timestamp, {
+    this.tags = const [],
+    this.viewsCounter = 0,
+    this.likesCounter = 0,
+    this.dislikesCounter = 0,
+    this.duration = '00:00',
+  });
 }
 
 class Channel {
@@ -29,15 +29,16 @@ class Channel {
   int subscribersCounter;
 
   Channel(
-      this.name, {
-        this.logoImagePath = '/',
-        this.imageUrl = '/',
-        this.subscribersCounter = 0,
-      });
+    this.name, {
+    this.logoImagePath = '/',
+    this.imageUrl = '/',
+    this.subscribersCounter = 0,
+  });
 }
 
 class Comment {
-  String avatarImagePath;
+  String? Id;
+  String? avatarImagePath;
   String username;
   String text;
 
@@ -49,9 +50,9 @@ class VideoComments {
   Comment topComment;
 
   VideoComments(
-      this.topComment, {
-        this.numberOfComments = 0,
-      });
+    this.topComment, {
+    this.numberOfComments = 0,
+  });
 }
 
 Channel currentUser = Channel(

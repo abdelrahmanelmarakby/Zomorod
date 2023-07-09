@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "507894371327",
+    "project_id": "zomorod",
+    "storage_bucket": "zomorod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507894371327:android:27fd0b6ba11c99f423cdca",
+        "android_client_info": {
+          "package_name": "com.example.zomorod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507894371327-hplsktd6fm9nhqrt7sb2m535oehl0li1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtd8OVfOlEcjnHfZx8JoWC6jE3glo5Tic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507894371327-hplsktd6fm9nhqrt7sb2m535oehl0li1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
