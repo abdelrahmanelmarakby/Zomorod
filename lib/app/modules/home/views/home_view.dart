@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:zomorod/app/data/models/video_model.dart';
 import 'package:zomorod/data/data.dart';
 import 'package:zomorod/widgets/video_card.dart';
 
 import '../../../../core/services/theme.dart';
 import '../../../../widgets/app_bar.dart';
 import '../../../../widgets/util.dart';
+import '../../../data/api/firebase_video_service.dart';
 import '../../../routes/app_pages.dart';
 import '../../profile_settings/views/pages/watch_time_stats.dart';
 import '../controllers/home_controller.dart';
@@ -16,6 +18,7 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    videos.map((e) => VideoService.addVideo(e));
     return Scaffold(
       drawer: Padding(
         padding:

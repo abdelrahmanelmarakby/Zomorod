@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
 
 List<VideoModel> videos = List.generate(
@@ -384,28 +385,30 @@ List<String> videoTitles = [
   "Effective Time Management Strategies",
 ];
 
-List<String> imageUrls = [
-  "https://example.com/image1.jpg",
-  "https://example.com/image2.jpg",
-  "https://example.com/image3.jpg",
-  "https://example.com/image4.jpg",
-  "https://example.com/image5.jpg",
-  "https://example.com/image6.jpg",
-  "https://example.com/image7.jpg",
-  "https://example.com/image8.jpg",
-  "https://example.com/image9.jpg",
-  "https://example.com/image10.jpg",
-  "https://example.com/image11.jpg",
-  "https://example.com/image12.jpg",
-  "https://example.com/image13.jpg",
-  "https://example.com/image14.jpg",
-  "https://example.com/image15.jpg",
-  "https://example.com/image16.jpg",
-  "https://example.com/image17.jpg",
-  "https://example.com/image18.jpg",
-  "https://example.com/image19.jpg",
-  "https://example.com/image20.jpg",
-];
+List<String> imageUrls = List.generate(
+    20,
+    (index) => Faker.withGenerator(random).image.image(random: true, keywords: [
+          "#gaming",
+          "#highlights",
+          "#video games",
+          "#cooking",
+          "#recipes",
+          "#fitness",
+          "#workout",
+          "#travel",
+          "#adventure",
+          "#web development",
+          "#programming",
+          "#art",
+          "#photography",
+          "#music",
+          "#fashion",
+          "#technology",
+          "#nature",
+          "#food",
+          "#health",
+          "#education",
+        ]));
 List<String> tags = [
   "#gaming",
   "#highlights",

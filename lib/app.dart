@@ -79,18 +79,15 @@ class MyAppState extends State<MyApp> {
           // CustomError(errorDetails: errorDetails);
         };
         child = botToastBuilder(context, child!);
-        return ResponsiveWrapper.builder(
-            ClampingScrollWrapper.builder(context, child),
-            maxWidth: 1200,
-            minWidth: 450,
-            defaultScale: true,
-            breakpoints: [
-              const ResponsiveBreakpoint.resize(450, name: MOBILE),
-              const ResponsiveBreakpoint.autoScale(600, name: TABLET),
-              const ResponsiveBreakpoint.resize(800, name: DESKTOP),
-              const ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
-            ],
-            background: Container(color: const Color(0xFFF5F5F5)));
+        return ResponsiveBreakpoints.builder(
+          child: child,
+          breakpoints: [
+            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+        );
       },
     );
   }

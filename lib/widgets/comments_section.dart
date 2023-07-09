@@ -10,7 +10,7 @@ class CommentsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: mainComponentsGrey,
-      child:  Padding(
+      child: const Padding(
         padding: EdgeInsets.only(bottom: 15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,7 +83,7 @@ class LastComment extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  currentVideoComments.topComment.avatarImagePath,
+                  currentVideoComments.topComment.avatarImagePath ?? "",
                 ),
                 fit: BoxFit.fill,
               ),

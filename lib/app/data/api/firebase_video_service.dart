@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
 import 'package:zomorod/app/data/models/video_model.dart';
 
 class VideoService {
