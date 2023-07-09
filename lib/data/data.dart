@@ -1,7 +1,7 @@
 class Video {
   final String miniatureImagePath;
   final String title;
-  final Channel channel;
+  final Channel? channel;
   final DateTime timestamp;
   String duration;
   List<String> tags;

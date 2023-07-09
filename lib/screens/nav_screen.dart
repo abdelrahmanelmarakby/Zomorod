@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app/modules/home/views/home_view.dart';
 import '../data/colors.dart';
 import '../screens/home_screen.dart';
 import '../screens/library_screen.dart';
@@ -14,7 +15,7 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   int _selectedIndex = 0;
   final _screens = [
-    HomeScreen(),
+    const HomeView(),
     const Scaffold(body: Center(child: Text('Add'))),
     const Subscription(),
     const LibraryTab(),

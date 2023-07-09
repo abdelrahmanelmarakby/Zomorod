@@ -4,11 +4,11 @@ import 'package:video_player/video_player.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:zomorod/widgets/video_card.dart';
+import '../app/data/models/video_model.dart';
 import '../core/services/network_service.dart/dio_helper.dart';
 import '../data/data.dart';
 import '../screens/video_detail_screen.dart';
 import 'app_bar.dart';
-
 
 String formatNumber(int value) {
   const units = <int, String>{
@@ -158,7 +158,9 @@ class History_page extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const VideoDetailPage(),
+                    builder: (context) => VideoDetailPage(
+                      video: VideoModel(),
+                    ),
                   ),
                 );
               },
@@ -215,13 +217,11 @@ class History_page extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          '${ data['channelTitle']
+                          '${data['channelTitle']
                           //video.channel.name
                           } • '
                           '${formatNumber(video.viewsCounter)} • '
-                          '${timeago.format(
-
-                              video.timestamp)}',
+                          '${timeago.format(video.timestamp)}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
@@ -267,7 +267,9 @@ class Download_page extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const VideoDetailPage(),
+                    builder: (context) => VideoDetailPage(
+                      video: VideoModel(),
+                    ),
                   ),
                 );
               },
@@ -313,7 +315,7 @@ class Download_page extends StatelessWidget {
                       Flexible(
                         child: Text(
                           data['title'],
-                         // video.title,
+                          // video.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
@@ -324,8 +326,7 @@ class Download_page extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          '${
-                           data['channelTitle']
+                          '${data['channelTitle']
                           //video.channel.name
                           } • '
                           '${formatNumber(video.viewsCounter)} • '
@@ -377,13 +378,15 @@ class Recommendation_page extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const VideoDetailPage(),
+                      builder: (context) => VideoDetailPage(
+                        video: VideoModel(),
+                      ),
                     ),
                   );
                 },
                 child: Image.network(
-                   data['thumbnails']['medium']['url'],
-                 // video.miniatureImagePath,
+                  data['thumbnails']['medium']['url'],
+                  // video.miniatureImagePath,
                   height: 250.0,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -438,10 +441,9 @@ class Recommendation_page extends StatelessWidget {
                         ),
                         Flexible(
                           child: Text(
-                            '${
-                             data['channelTitle']
+                            '${data['channelTitle']
                             //video.channel.name
-    } • '
+                            } • '
                             '${formatNumber(video.viewsCounter)} • '
                             '${timeago.format(video.timestamp)}',
                             maxLines: 1,
@@ -491,8 +493,7 @@ class SubsScreen extends StatelessWidget {
                     getVideos(index + 5, 'v3/search');
                     final video = homeScreenVideos[index];
                     return VideoCard(
-                      video: video,
-                      data: videosdata,
+                      video: VideoModel(),
                     );
                   },
                   childCount: 20,
@@ -525,8 +526,7 @@ class YourVideo extends StatelessWidget {
                     getVideos(index + 1, 'v3/search');
                     final video = homeScreenVideos[index];
                     return VideoCard(
-                      video: video,
-                      data: videosdata,
+                      video: VideoModel(),
                     );
                   },
                   childCount: 20,

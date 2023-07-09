@@ -12,6 +12,7 @@ import '../../../../core/services/theme.dart';
 import '../../../../widgets/video_card.dart';
 import '../../../data/api/search_apis.dart';
 import '../../../data/models/search_model.dart';
+import '../../../data/models/video_model.dart';
 import '../controllers/search_controller.dart';
 import 'widgets/serach_input.dart';
 
@@ -30,19 +31,8 @@ class SearchView extends GetView<SearchController> {
 
                 return ListView.builder(
                     itemCount: searchData?.items?.length ?? 0,
-                    itemBuilder: (context, index) => VideoCard(
-                        video: Video(
-                            searchData?.items?[index].snippet?.thumbnails?.high
-                                    ?.url ??
-                                "",
-                            searchData?.items?[index].snippet?.title ?? "",
-                            Channel(searchData
-                                    ?.items?[index].snippet?.channelTitle ??
-                                ""),
-                            DateTime.parse(searchData
-                                    ?.items?[index].snippet?.publishTime ??
-                                "")),
-                        data: const {}));
+                    itemBuilder: (context, index) =>
+                        VideoCard(video: VideoModel()));
               } else {
                 return const Center(
                   child: CircularProgressIndicator.adaptive(),

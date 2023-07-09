@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import '../app/data/models/video_model.dart';
 import '../screens/video_detail_screen.dart';
 import '../widgets/util.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../data/data.dart';
 
 class VideoCard extends StatelessWidget {
-  final Video video;
-  final Map data;
+  final VideoModel video;
 
-  const VideoCard({Key? key, required this.video, required this.data})
-      : super(key: key);
+  const VideoCard({
+    Key? key,
+    required this.video,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,17 @@ class VideoCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const VideoDetailPage(),
+                builder: (context) => VideoDetailPage(
+                  video: video,
+                ),
               ),
             );
           },
           child: Stack(
             children: [
               Image.network(
-                 data['thumbnails']['medium']['url'],
-                //video.miniatureImagePath,
+                //  data['thumbnails']['medium']['url'],
+                video.miniatureImageUrl ?? "",
                 height: 220.0,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -40,7 +44,7 @@ class VideoCard extends StatelessWidget {
                   padding: const EdgeInsets.all(4.0),
                   color: Colors.black,
                   child: Text(
-                    video.duration,
+                    video.duration??"",
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
@@ -60,7 +64,7 @@ class VideoCard extends StatelessWidget {
               GestureDetector(
                 onTap: () => print('Navigate to profile'),
                 child: CircleAvatar(
-                  foregroundImage: NetworkImage(video.miniatureImagePath),
+                  foregroundImage: NetworkImage(video.miniatureImageUrl??""),
                 ),
               ),
               const SizedBox(width: 8.0),
@@ -71,8 +75,8 @@ class VideoCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        data['title'],
-                      // video.title,
+                        // data['title'],
+                        video.title??"",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
@@ -83,12 +87,10 @@ class VideoCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        '${
-                         data['channelTitle']
-                        //video.channel.name
-    } • '
-                        '${formatNumber(video.viewsCounter)} • '
-                        '${timeago.format(video.timestamp)}',
+                        //'${data['channelTitle']
+                        video.channel?.name ??
+                            '${formatNumber(video.viewsCounter!)} • '
+                                '${timeago.format(video.timestamp!)}',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)

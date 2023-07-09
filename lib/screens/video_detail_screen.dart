@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app/data/models/video_model.dart';
 import '../data/colors.dart';
 import '../widgets/action_buttons_bar.dart';
 import '../widgets/comments_section.dart';
@@ -7,8 +8,8 @@ import '../widgets/util.dart';
 import '../widgets/video_description.dart';
 
 class VideoDetailPage extends StatelessWidget {
-  const VideoDetailPage({Key? key}) : super(key: key);
-
+  const VideoDetailPage({Key? key, required this.video}) : super(key: key);
+  final VideoModel video;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

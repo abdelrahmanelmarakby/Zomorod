@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app/data/models/video_model.dart';
 import '../data/colors.dart';
 import '../widgets/util.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -21,7 +22,9 @@ class VideoRecommendation extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoDetailPage(),
+                  builder: (context) => VideoDetailPage(
+                    video: VideoModel(),
+                  ),
                 ),
               );
             },
@@ -69,7 +72,7 @@ class VideoRecommendationDescription extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(videoData.channel.logoImagePath),
+                image: NetworkImage(videoData.channel?.logoImagePath ?? ""),
                 fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(100.0),
@@ -94,7 +97,7 @@ class VideoRecommendationDescription extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${videoData.channel.name} • '
+                    '${videoData.channel?.name} • '
                     '${formatNumber(videoData.viewsCounter)} views • '
                     '${timeago.format(videoData.timestamp)}',
                     style: const TextStyle(color: textLightGrey, fontSize: 13),

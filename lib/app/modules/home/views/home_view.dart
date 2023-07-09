@@ -1,8 +1,9 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:zomorod/app/data/models/video_model.dart';
+import 'package:zomorod/app/data/models/video_model.dart' hide Channel;
 import 'package:zomorod/data/data.dart';
 import 'package:zomorod/widgets/video_card.dart';
 
@@ -16,9 +17,9 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    videos.map((e) => VideoService.addVideo(e));
     return Scaffold(
       drawer: Padding(
         padding:
@@ -27,28 +28,25 @@ class HomeView extends GetView<HomeController> {
       ),
       appBar: const CustomAppBar(),
       body: SafeArea(
-        child: CustomScrollView(
-          primary: false,
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.only(bottom: 60.0),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    getVideos(index, 'v3/search');
-                    final video = homeScreenVideos[index];
-                    return VideoCard(
-                      video: video,
-                      data: videosdata,
-                    );
-                  },
-                  childCount: 20,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+          child: FutureBuilder(
+        future: VideoService().getAllUserVideos(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<VideoModel> videos = [];
+            snapshot.data?.docs.map((e) {
+              videos.add(VideoModel.fromMap(e.data()));
+            }).toList();
+            return ListView.builder(
+                itemCount: videos.length,
+                itemBuilder: (context, index) =>
+                    VideoCard(video: videos[index]));
+          } else {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+        },
+      )),
     );
   }
 }

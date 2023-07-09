@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app/data/models/video_model.dart';
 import '../screens/video_detail_screen.dart';
 import '../widgets/util.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -22,13 +23,15 @@ class HistoryCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VideoDetailPage(),
+                    builder: (context) => VideoDetailPage(
+                      video: VideoModel(),
+                    ),
                   ),
                 );
               },
               child: Image.network(
                 data['thumbnails']['medium']['url'],
-               // video.miniatureImagePath,
+                // video.miniatureImagePath,
                 height: 90.0,
                 width: 170.0,
                 fit: BoxFit.cover,
@@ -76,9 +79,9 @@ class HistoryCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        '${ data['channelTitle']
+                        '${data['channelTitle']
                         //video.channel.name
-    } • '
+                        } • '
                         '${formatNumber(video.viewsCounter)} • '
                         '${timeago.format(video.timestamp)}',
                         maxLines: 1,
@@ -94,7 +97,7 @@ class HistoryCard extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {},
-                child: Icon(Icons.more_vert, size: 20.0),
+                child: const Icon(Icons.more_vert, size: 20.0),
               ),
             ],
           ),

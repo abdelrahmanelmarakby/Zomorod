@@ -8,28 +8,34 @@ class VideoService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   static Future<bool> addVideo(VideoModel video) async {
-    DocumentReference documentReference = _firestore.collection("Videos").doc();
+    try {
+      DocumentReference documentReference =
+          _firestore.collection("Videos").doc();
 
-    await FirebaseFirestore.instance
-        .runTransaction((transaction) async {
-          transaction.set(
-            documentReference,
-            video
-                .copyWith(
-                  id: documentReference.id,
-                )
-                .toMap(),
-          );
-        })
-        .onError((error, stackTrace) {
-          BotToast.showText(text: "Error");
-          BotToast.closeAllLoading();
-        })
-        .then((value) => BotToast.showText(text: "Video Added"))
-        .catchError((error) {
-          BotToast.closeAllLoading();
-          return BotToast.showText(text: "Error : $error");
-        });
+      await FirebaseFirestore.instance
+          .runTransaction((transaction) async {
+            transaction.set(
+              documentReference,
+              video
+                  .copyWith(
+                    id: documentReference.id,
+                  )
+                  .toMap(),
+            );
+          })
+          .onError((error, stackTrace) {
+            BotToast.showText(text: "Error");
+            BotToast.closeAllLoading();
+          })
+          .then((value) => BotToast.showText(text: "Video Added"))
+          .catchError((error) {
+            BotToast.closeAllLoading();
+            return BotToast.showText(text: "Error : $error");
+          });
+    } catch (e) {
+      return false;
+      print(e);
+    }
     return true;
   }
 
@@ -64,15 +70,10 @@ class VideoService {
     print("Deleted");
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> getAllUserVideos(
-      List<String> uids) async {
-    // ignore: avoid_print
-    print("uids $uids");
-
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllUserVideos() async {
     final data = await _firestore
         .collection("Videos")
-        .orderBy("createdAt", descending: true)
-        .where("uid", whereIn: uids)
+        .orderBy("likesCounter", descending: true)
         .get();
     return data;
   }

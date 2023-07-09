@@ -35,6 +35,8 @@ dependencies:
   flick_video_player: ^0.5.0
   fluttertoast: ^8.1.2
   animate_do: ^3.0.2
+  csslib: 0.17.0
+
   iconsax: ^0.0.8
   dio: ^5.0.0
   bot_toast: ^4.0.3

@@ -30,6 +30,7 @@ class Subscription extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           final video = homeScreenVideos[index];
+
                           getVideos(index, 'v3/search');
                           return buildSubsList(video, videosdata);
                         },
@@ -79,19 +80,17 @@ Widget buildSubsList(Video video, Map data) {
             radius: 30.0,
             backgroundImage: NetworkImage(
                 //data['thumbnails']['medium']['url']
-                 video.miniatureImagePath
-                ),
+                video.miniatureImagePath),
           ),
         ],
       ),
       const SizedBox(
         height: 5.0,
       ),
-       SizedBox(
+      const SizedBox(
         width: 70.0,
         child: Text(
-           data['channelTitle'],
-          //'Mariam Hussien',
+          'Mariam Hussien',
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
               color: suvaGrey, fontWeight: FontWeight.bold, fontSize: 12.0),
